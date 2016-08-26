@@ -2,10 +2,8 @@
 @model IEnumerable<exercise2.Models.Fan>
 
 @section head {
-    <link href="~/STyles/FanClub.css" )" rel="stylesheet" type="text/css" />
+    <link href="~/Styles/FanClub.css" rel="stylesheet" type="text/css" />
 }
-
-
 
 @{
     ViewBag.Title = "Fan Club List";
@@ -58,8 +56,8 @@
                     @Html.DisplayFor(modelItem => item.Seniority)
                 </td>
                 <td id="crude">
-                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "link" })
                     @Html.ActionLink("Details", "Details", new { id = item.ID }, new { @class = "link" })
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "link" })
                     @Html.ActionLink("Delete", "Delete", new { id = item.ID }, new { @class = "link" })
                 </td>
             </tr>

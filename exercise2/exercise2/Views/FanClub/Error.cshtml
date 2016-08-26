@@ -2,16 +2,26 @@
 
 @{
     ViewBag.Title = "Error";
-    if ((ViewBag.ErrorMsg != null))
-    {
-        <p>
-            @ViewBag.ErrorMsg
-        </p>
-    }
 }
 @section head {
-    <link href="~/STyles/FanClub.css" )" rel="stylesheet" type="text/css" />
+    <link href="~/Styles/FanClub.css" rel="stylesheet" type="text/css" />
 }
+
+@{
+    if ((ViewBag.ErrorMsg != null))
+    {
+        <h2 id="FanClubTitle">
+            Error: @ViewBag.ErrorMsg
+        </h2>
+    }
+    else
+    {
+        <h2 id="FanClubTitle">
+            Error
+        </h2>
+    }
+}
+
 <div>
     @Html.ActionLink("Back to List", "Index", null, new { @class = "link" })
 </div>

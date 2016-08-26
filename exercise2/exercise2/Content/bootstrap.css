@@ -52,7 +52,6 @@ audio:not([controls]) {
 }
 
 html {
-  font-family: sans-serif;
   -webkit-text-size-adjust: 100%;
       -ms-text-size-adjust: 100%;
 }
@@ -103,7 +102,6 @@ code,
 kbd,
 pre,
 samp {
-  font-family: monospace, serif;
   font-size: 1em;
 }
 
@@ -163,7 +161,6 @@ input,
 select,
 textarea {
   margin: 0;
-  font-family: inherit;
   font-size: 100%;
 }
 
@@ -311,7 +308,6 @@ html {
 }
 
 body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 1.428571429;
   color: #333333;
@@ -322,7 +318,6 @@ input,
 button,
 select,
 textarea {
-  font-family: inherit;
   font-size: inherit;
   line-height: inherit;
 }
@@ -473,7 +468,6 @@ h6,
 .h4,
 .h5,
 .h6 {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 500;
   line-height: 1.1;
 }
@@ -712,7 +706,7 @@ address {
 
 code,
 pre {
-  font-family: Monaco, Menlo, Consolas, "Courier New", monospace;
+  
 }
 
 code {
@@ -1682,7 +1676,6 @@ select[size] {
 }
 
 select optgroup {
-  font-family: inherit;
   font-size: inherit;
   font-style: inherit;
 }
@@ -1961,7 +1954,7 @@ textarea.input-lg {
 .form-horizontal .checkbox,
 .form-horizontal .radio-inline,
 .form-horizontal .checkbox-inline {
-  padding-top: 7px;
+  padding-top: 5px;
   margin-top: 0;
   margin-bottom: 0;
 }
@@ -1993,7 +1986,7 @@ textarea.input-lg {
 
 @media (min-width: 768px) {
   .form-horizontal .control-label {
-    text-align: right;
+    text-align: left;
   }
 }
 
@@ -6125,7 +6118,6 @@ body.modal-open,
   height: 20px;
   margin-top: -10px;
   margin-left: -10px;
-  font-family: serif;
 }
 
 .carousel-control .icon-prev:before {
