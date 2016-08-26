@@ -1,0 +1,35 @@
+﻿
+
+h2#FanClubTitle{
+    font-size: 28px;
+	line-height: 44px;
+	padding: 22px 0;
+    color:  darkcyan;
+}
+table{
+    padding-bottom: 20px;
+}
+th, td {
+    border: 1px solid black;
+    text-align: left;
+    width: 5%;
+    text-align:center;
+    padding-top:5px;
+}
+td#crude{
+    width:10%;
+}
+td.strict {
+    width:10%;
+}
+.link{
+    background-color:gainsboro;
+    border:groove;
+}
+.form-group {
+    border: double;
+}
+.col-md-10{
+    padding-left:60px;
+}
+

@@ -1,0 +1,18 @@
+﻿@using System.Linq
+
+@{
+    ViewBag.Title = "Error";
+    if ((ViewBag.ErrorMsg != null))
+    {
+        <p>
+            @ViewBag.ErrorMsg
+        </p>
+    }
+}
+@section head {
+    <link href="~/STyles/FanClub.css" )" rel="stylesheet" type="text/css" />
+}
+<div>
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "link" })
+</div>
+
