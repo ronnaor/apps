@@ -15,14 +15,15 @@ header, footer, section, aside, nav, article {
 
 @font-face {
    font-family: myFont;
-   src: url(~/fonts/PWScratched2.ttf);
+   src: url("/fonts/Danoisemedium.ttf") format('truetype');
+   src: url("/fonts/Danoisemedium.otf") format('opentype');
 }
 
 body {
     margin: 0 auto;
     padding: 22px 0;
     width: 940px;
-    font-family: myFont;
+    font-family: myFont, 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     background: #F0F0F0;
 }
 h1 {
