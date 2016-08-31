@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
@@ -9,10 +10,7 @@ namespace exercise2.Models
 {
     public class Fan
     {
-        static int count = 0;
 
-        [Required]
-        [Display(Name = "ID")]
         public int ID { get; set; }
 
         [Required(ErrorMessage = "First name is required")]
@@ -43,12 +41,6 @@ namespace exercise2.Models
         public int Seniority { get; set; }
 
 
-        public Fan()
-        {
-            count++;
-            ID = count;
-        }
-
         public void copy(Fan fan)
         {
             Name = fan.Name;
@@ -64,5 +56,11 @@ namespace exercise2.Models
     {
         Male,
         Female
+    }
+
+
+    public class FanDBContext : DbContext
+    {
+        public DbSet<Fan> Fans { get; set; }
     }
 }

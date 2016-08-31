@@ -1,6 +1,7 @@
 ﻿using exercise2.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -9,12 +10,12 @@ namespace exercise2.Controllers
 {
     public class FanClubController : Controller
     {
-        static List<Fan> fans = new List<Fan>();
+        private FanDBContext db = new FanDBContext();
 
         // GET: FanClub
         public ActionResult Index()
         {
-            return View(fans);
+            return View(db.Fans.ToList());
         }
 
         // GET: FanClub/Error
@@ -35,11 +36,13 @@ namespace exercise2.Controllers
 
         // POST:  FanClub/Create
         [HttpPost]
-        public ActionResult Create(Fan fan)
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "ID,Name,LastName,Gender,BirthDate,Seniority")] Fan fan)
         {
             if (ModelState.IsValid)
             {
-                fans.Add(fan);
+                db.Fans.Add(fan);
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
             else
@@ -51,18 +54,18 @@ namespace exercise2.Controllers
         // GET: /FanClub/Details
         public ActionResult Details(int? id)
         {
-            if (!id.HasValue)
+            if (id == null)
             {
                 TempData["ErrorMsg"] = "No ID";
                 return RedirectToAction("Error");
             }
-            else if (!fans.Exists(x => x.ID == id.Value))
+            Fan fan = db.Fans.Find(id);
+            if (fan == null)
             {
-                TempData["ErrorMsg"] = "Wrong ID sent";
+                TempData["ErrorMsg"] = "No ID";
                 return RedirectToAction("Error");
             }
-
-            return View(fans[fans.FindIndex(w => w.ID == id.Value)]);
+            return View(fan);
         }
 
         // GET: FanClub/Edit
@@ -73,40 +76,28 @@ namespace exercise2.Controllers
                 TempData["ErrorMsg"] = "No ID";
                 return RedirectToAction("Error");
             }
-            foreach (Fan fan in fans)
+            Fan fan = db.Fans.Find(id);
+            if (fan == null)
             {
-                if (fan.ID.Equals(id))
-                {
-                    return View(fan);
-                }
+                TempData["ErrorMsg"] = "Error with edit";
+                return RedirectToAction("Error");
             }
-            TempData["ErrorMsg"] = "Error with edit";
-            return RedirectToAction("Error");
+            return View(fan);
+            
         }
 
         // POST: FanClub/Edit
         [HttpPost]
-        public ActionResult Edit(int? id, Fan fan)
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "ID,Name,LastName,Gender,BirthDate,Seniority")] Fan fan)
         {
-            if (!id.HasValue)
-            {
-                TempData["ErrorMsg"] = "No ID";
-                return RedirectToAction("Error");
-            }
             if (ModelState.IsValid)
             {
-                foreach (Fan f in fans)
-                {
-                    if (f.ID.Equals(id))
-                    {
-                        f.copy(fan);
-                        return RedirectToAction("Index");
-                    }
-                }
-                TempData["ErrorMsg"] = "Error with edit";
-                return RedirectToAction("Error");
+                db.Entry(fan).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
             }
-            return View();
+            return View(fan);
         }
 
         // GET: First/Delete
@@ -117,16 +108,32 @@ namespace exercise2.Controllers
                 TempData["ErrorMsg"] = "No ID";
                 return RedirectToAction("Error");
             }
-            foreach (Fan fan in fans)
+            Fan fan = db.Fans.Find(id);
+            if (fan == null)
             {
-                if (fan.ID.Equals(id))
-                {
-                    fans.RemoveAt(fans.FindIndex(w => w.ID == id.Value));
-                    return RedirectToAction("Index");
-                }
+                TempData["ErrorMsg"] = "No Data";
+                return RedirectToAction("Error");
             }
-            return RedirectToAction("Error");
+            return View(fan);
+        }
+        // POST: /Fans/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            Fan fan = db.Fans.Find(id);
+            db.Fans.Remove(fan);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
 
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
         }
     }
 }
