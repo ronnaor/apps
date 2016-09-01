@@ -1,20 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
 namespace exercise2.Models
 {
-    public class Post
+    public class Comment
     {
 
         public int ID { get; set; }
 
-        [Required(ErrorMessage = "Post must have title")]
+        public int PostID { get; set; }
+
+        [Required(ErrorMessage = "Comment must have title")]
         [DataType(DataType.Text)]
-        [Display(Name = "Post Title:")]
+        [Display(Name = "Comment Title:")]
         public string Title { get; set; }
 
         [Required(ErrorMessage = "Author name is required")]
@@ -27,32 +30,18 @@ namespace exercise2.Models
         [Display(Name = "Web adress:")]
         public string Web { get; set; }
 
-        [Required(ErrorMessage = "Date is required")]
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-        [Display(Name = "Publish Date:")]
-        public DateTime Date { get; set; }
-
         [Required(ErrorMessage = "Content is required")]
         [DataType(DataType.MultilineText)]
         [Display(Name = "Content:")]
         public int Content { get; set; }
 
-        [DataType(DataType.ImageUrl)]
-        [Display(Name = "Image:")]
-        public int Image { get; set; }
-
-        [DataType(DataType.Url)]
-        [Display(Name = "Video:")]
-        public int Video { get; set; }
-
-        [Display(Name = "List:")]
-        public IList<exercise2.Models.Comment> Comments { get; set;}
+        [Display(Name = "Post:")]
+        public Post Post { get; set; }
 
     }
 
-    public class PostDBContext : DbContext
+    public class CommentDBContext : DbContext
     {
-        public DbSet<Post> Posts { get; set; }
+        public DbSet<Comment> Comments { get; set; }
     }
 }

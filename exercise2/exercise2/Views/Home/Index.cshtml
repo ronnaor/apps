@@ -1,7 +1,64 @@
 ﻿
 @{
-    ViewBag.Title = "Home page";
+    ViewBag.Title = "Index";
 }
 
-<h2>welcome to Ha-Blog Shel Shauli...</h2>
+<section id="search">
+    <!-- Search -->
+    <form action="#" method="POST">
+        <fieldset>
+            <legend>Search post:</legend>
+            <table>
+                <tr>
+                    <td>
+                        <label for="date">Date Of Publish:</label>
+                    </td>
+                    <td>
+                        <input type="date" name="date" id="date">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="author">Author:</label>
+                    </td>
+                    <td>
+                        <input type="text" name="author" id="author" placeholder="Enter author name">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="email">Email:</label>
+                    </td>
+                    <td>
+                        <input type="email" name="email" id="email">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="words">Words:</label>
+                    </td>
+                    <td>
+                        <input type="text" name="words" id="words" placeholder="Search words in the blog">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="comments">Minimum Comments:</label>
+                    </td>
+                    <td>
+                        <input type="range" name="comments" id="comments" min="0" max="10">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="submit" colspan="2">
+                        <input type="submit" value="Submit">
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+    </form>
+</section>
+
+
+
 
