@@ -10,7 +10,7 @@ namespace exercise2.Models
     public class Post
     {
 
-        public int ID { get; set; }
+        public int PostID { get; set; }
 
         [Required(ErrorMessage = "Post must have title")]
         [DataType(DataType.Text)]
