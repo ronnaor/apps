@@ -1,0 +1,46 @@
+﻿@model Blog.Models.Fan
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+@section head {
+    <link href="~/Styles/FanClub.css" rel="stylesheet" type="text/css" />
+}
+
+<h2 id="FanClubTitle">Are you sure you want to delete this fan?</h2>
+
+<div>
+    <table class="table-horizontal">
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Name)</th>
+            <td>@Html.DisplayFor(model => model.Name)</td>
+        </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.LastName)</th>
+            <td>@Html.DisplayFor(model => model.LastName)</td>
+        </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Gender)</th>
+            <td>@Html.DisplayFor(model => model.Gender)</td>
+        </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.BirthDate)</th>
+            <td>@Html.DisplayFor(model => model.BirthDate)</td>
+        </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Seniority)</th>
+            <td>@Html.DisplayFor(model => model.Seniority)</td>
+        </tr>
+    </table>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="link" />
+            @Html.ActionLink("Back to List", "Index", null, new { @class = "link" })
+        </div>
+    }
+</div>

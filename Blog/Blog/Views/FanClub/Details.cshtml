@@ -1,0 +1,39 @@
+﻿@model Blog.Models.Fan
+
+@{
+    ViewBag.Title = "Details";
+}
+@section head {
+    <link href="~/Styles/FanClub.css" rel="stylesheet" type="text/css" />
+}
+<h2 id="FanClubTitle">Details</h2>
+
+<div>
+    <table class="table-horizontal">
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Name)</th>
+            <td>@Html.DisplayFor(model => model.Name)</td>
+        </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.LastName)</th>
+            <td>@Html.DisplayFor(model => model.LastName)</td>
+        </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Gender)</th>
+            <td>@Html.DisplayFor(model => model.Gender)</td>
+        </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.BirthDate)</th>
+            <td>@Html.DisplayFor(model => model.BirthDate)</td>
+        </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Seniority)</th>
+            <td>@Html.DisplayFor(model => model.Seniority)</td>
+        </tr>
+    </table>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "link" })
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }, new { @class = "link" })
+    @Html.ActionLink("Delete", "Delete", new { id = Model.ID }, new { @class = "link" })
+</p>
