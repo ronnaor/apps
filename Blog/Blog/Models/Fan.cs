@@ -58,9 +58,6 @@ namespace Blog.Models
     }
 
 
-    public class FanDBContext : DbContext
-    {
-        public DbSet<Fan> Fans { get; set; }
-    }
+   
 
 }

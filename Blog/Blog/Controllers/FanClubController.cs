@@ -7,12 +7,13 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Blog.Models;
+using Blog.DAL;
 
 namespace Blog.Controllers
 {
     public class FanClubController : Controller
     {
-        private FanDBContext db = new FanDBContext();
+        private BlogDBContext db = new BlogDBContext();
 
         // GET: FanClub
         public ActionResult Index()

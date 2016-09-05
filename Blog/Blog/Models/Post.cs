@@ -18,7 +18,7 @@ namespace Blog.Models
         public string Title { get; set; }
 
         [Required(ErrorMessage = "Author name is required")]
-        [RegularExpression(@"([\p{L}'-]+) ([\p{L}'-]+)", ErrorMessage = "Must be only chars")]
+        [DataType(DataType.Text)]
         [Display(Name = "Author Name:")]
         public string Name { get; set; }
 
@@ -36,22 +36,19 @@ namespace Blog.Models
         [Required(ErrorMessage = "Content is required")]
         [DataType(DataType.MultilineText)]
         [Display(Name = "Content:")]
-        public int Content { get; set; }
+        public string Content { get; set; }
 
         [DataType(DataType.ImageUrl)]
         [Display(Name = "Image:")]
-        public int Image { get; set; }
+        public string Image { get; set; }
 
         [DataType(DataType.Url)]
         [Display(Name = "Video:")]
-        public int Video { get; set; }
+        public string Video { get; set; }
 
         [Display(Name = "List:")]
         public IList<Blog.Models.Comment> Comments { get; set; }
     }
 
-        public class PostDBContext : DbContext
-        {
-            public DbSet<Post> Posts { get; set; }
-        }
+       
     }

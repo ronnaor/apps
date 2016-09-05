@@ -1,0 +1,74 @@
+﻿@model IEnumerable<Blog.Models.Post>
+
+@{
+    ViewBag.Title = "Blog Guests";
+}
+
+<audio controls autoplay><source src="~/music/song.mp3" type="audio/mpeg" controls="controls"></audio>
+
+@foreach (var item in Model)
+{
+    <section>
+        <article class="blogPost">
+            <header>
+                <h2>@Html.DisplayFor(modelItem => item.Title)</h2>
+                <p>Posted on @Html.DisplayFor(modelItem => item.Date) by @Html.DisplayFor(modelItem => item.Name) - <a href="#comments">3 comments</a></p>
+            </header>
+            <div>
+                @if (!String.IsNullOrEmpty(item.Image)) 
+                {
+                    <img src="@Html.DisplayFor(modelItem => item.Image)" alt="Image" />
+                }
+
+                <p>@Html.DisplayFor(modelItem => item.Content)</p>
+            
+                @if (!String.IsNullOrEmpty(item.Video))
+                {
+                    <video controls="controls">
+                        <source src="@Html.DisplayFor(modelItem => item.Video)" type="video/mp4" />
+                        Your browser does not support the video tag.
+                    </video>
+                }          
+            </div>
+        </article>
+    </section>
+
+    <h3>Comments</h3>
+    @foreach (var comment in item.Comments)
+    {
+        <section id="comments">
+            <article>
+                <header>
+                    @Html.DisplayFor(modelItem => item.Name) on @Html.DisplayFor(modelItem => item.Date)
+                </header>
+                <p>@Html.DisplayFor(modelItem => item.Content)</p>
+            </article>
+        </section>
+    }
+        <form action="#" method="post">
+            <h3>Post a comment</h3>
+            <p>
+                <label> for="name">Name</label>
+                <input name="name" id="name" type="text" required />
+            </p>
+            <p>
+                <label for="email">E-mail</label>
+                <input name="email" id="email" type="email" required />
+            </p>
+            <p>
+                <label for="website">Website</label>
+                <input name="website" id="website" type="url" />
+            </p>
+            <p>
+                <label for="comment">Comment</label>
+                <textarea name="comment" id="comment" required></textarea>
+            </p>
+            <p><input type="submit" value="Post comment" /></p>
+        </form>
+
+}
+
+
+    
+
+

@@ -18,7 +18,6 @@ namespace Blog.Models
         public string Title { get; set; }
 
         [Required(ErrorMessage = "Author name is required")]
-        [RegularExpression(@"([\p{L}'-]+) ([\p{L}'-]+)", ErrorMessage = "Must be only chars")]
         [Display(Name = "Author Name:")]
         public string Name { get; set; }
 
@@ -30,9 +29,15 @@ namespace Blog.Models
         [Required(ErrorMessage = "Content is required")]
         [DataType(DataType.MultilineText)]
         [Display(Name = "Content:")]
-        public int Content { get; set; }
+        public string Content { get; set; }
 
         [Display(Name = "Post:")]
         public Post Post { get; set; }
+
+        [Required(ErrorMessage = "Date is required")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [Display(Name = "Publish Date:")]
+        public DateTime Date { get; set; }
     }
 }
