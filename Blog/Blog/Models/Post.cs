@@ -42,12 +42,12 @@ namespace Blog.Models
         [Display(Name = "Image:")]
         public string Image { get; set; }
 
-        [DataType(DataType.Url)]
+        [DataType(DataType.ImageUrl)]
         [Display(Name = "Video:")]
         public string Video { get; set; }
 
         [Display(Name = "List:")]
-        public IList<Blog.Models.Comment> Comments { get; set; }
+        public virtual IList<Blog.Models.Comment> Comments { get; set; }
     }
 
        

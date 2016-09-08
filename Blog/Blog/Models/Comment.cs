@@ -28,16 +28,17 @@ namespace Blog.Models
 
         [Required(ErrorMessage = "Content is required")]
         [DataType(DataType.MultilineText)]
-        [Display(Name = "Content:")]
+        [Display(Name = "Comment:")]
         public string Content { get; set; }
+
+        [Required(ErrorMessage = "Date is required")]
+        [DataType(DataType.DateTime)]
+        [Display(Name = "Publish Date:")]
+        public DateTime Date { get; set; }
 
         [Display(Name = "Post:")]
         public Post Post { get; set; }
 
-        [Required(ErrorMessage = "Date is required")]
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-        [Display(Name = "Publish Date:")]
-        public DateTime Date { get; set; }
+       
     }
 }

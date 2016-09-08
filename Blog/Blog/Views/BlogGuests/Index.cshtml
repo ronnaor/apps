@@ -6,69 +6,82 @@
 
 <audio controls autoplay><source src="~/music/song.mp3" type="audio/mpeg" controls="controls"></audio>
 
-@foreach (var item in Model)
+@if (!Model.Any())
 {
-    <section>
-        <article class="blogPost">
-            <header>
-                <h2>@Html.DisplayFor(modelItem => item.Title)</h2>
-                <p>Posted on @Html.DisplayFor(modelItem => item.Date) by @Html.DisplayFor(modelItem => item.Name) - <a href="#comments">3 comments</a></p>
-            </header>
-            <div>
-                @if (!String.IsNullOrEmpty(item.Image)) 
-                {
-                    <img src="@Html.DisplayFor(modelItem => item.Image)" alt="Image" />
-                }
-
-                <p>@Html.DisplayFor(modelItem => item.Content)</p>
-            
-                @if (!String.IsNullOrEmpty(item.Video))
-                {
-                    <video controls="controls">
-                        <source src="@Html.DisplayFor(modelItem => item.Video)" type="video/mp4" />
-                        Your browser does not support the video tag.
-                    </video>
-                }          
-            </div>
-        </article>
-    </section>
-
-    <h3>Comments</h3>
-    @foreach (var comment in item.Comments)
+    <h2 id="empty">There are no posts</h2>
+}
+else
+{
+    foreach (var item in Model)
     {
-        <section id="comments">
-            <article>
+        <section>
+            <article class="blogPost">
                 <header>
-                    @Html.DisplayFor(modelItem => item.Name) on @Html.DisplayFor(modelItem => item.Date)
+                    <h2>@Html.DisplayFor(modelItem => item.Title)</h2>
+                    <p>Posted on @Html.DisplayFor(modelItem => item.Date) by <a href="@item.Web">@Html.DisplayFor(modelItem => item.Name)</a> - <a href="#comments">@item.Comments.Count() comments</a></p>
                 </header>
-                <p>@Html.DisplayFor(modelItem => item.Content)</p>
+                <div>
+                    @if (!String.IsNullOrEmpty(item.Image))
+                    {
+                        <img src="@item.Image" alt="Image" />
+                    }
+                    <p>@Html.DisplayFor(modelItem => item.Content)</p>
+
+                    @if (!String.IsNullOrEmpty(item.Video))
+                    {
+                        <video controls="controls">
+                            <source src="@item.Video" type='video/mp4'/>
+                            Your browser does not support the video tag.
+                        </video>
+                    }
+                </div>
             </article>
         </section>
+
+        <section id="comments">
+            <h3>Comments for @item.Title:</h3>
+            @if (item.Comments != null)
+            {
+                foreach (var comment in item.Comments)
+                {
+                    <article>
+                        <header>
+                            <h4>@Html.DisplayFor(modelItem => comment.Title)</h4>
+                            <a href="@comment.Web">@Html.DisplayFor(modelItem => comment.Name)</a>
+                            <time>@Html.DisplayFor(modelItem => comment.Date) </time>
+                        </header>
+                        <p>@Html.DisplayFor(modelItem => comment.Content)</p>
+                    </article>
+                }
+            }
+        </section>
+
+        <section class="addComment">
+            @using (Html.BeginForm())
+            {
+                <h3>Post a comment for @item.Title:</h3>
+                <input type="hidden" name="postID" value="@item.PostID" />
+                <p>
+                    <label for="title">Title:</label>
+                    <input name="title" id="title" type="text" required />
+                </p>
+                <p>
+                    <label for="name">Name:</label>
+                    <input name="name" id="name" type="text" required />
+                </p>
+                <p>
+                    <label for="website">Website:</label>
+                    <input name="website" id="website" type="url" required />
+                </p>
+                <p>
+                    <label for="comment">Comment:</label>
+                    <textarea name="comment" id="comment" required></textarea>
+                </p>
+                <p><input type="submit" value="Post comment" /></p>
+            }
+        </section>
+
     }
-        <form action="#" method="post">
-            <h3>Post a comment</h3>
-            <p>
-                <label> for="name">Name</label>
-                <input name="name" id="name" type="text" required />
-            </p>
-            <p>
-                <label for="email">E-mail</label>
-                <input name="email" id="email" type="email" required />
-            </p>
-            <p>
-                <label for="website">Website</label>
-                <input name="website" id="website" type="url" />
-            </p>
-            <p>
-                <label for="comment">Comment</label>
-                <textarea name="comment" id="comment" required></textarea>
-            </p>
-            <p><input type="submit" value="Post comment" /></p>
-        </form>
-
 }
-
-
-    
 
 

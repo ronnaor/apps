@@ -23,8 +23,19 @@ namespace Blog.Controllers
 
         // POST: BlogGuests
         [HttpPost]
-        public ActionResult Index(string title, string name, string web, string content)
+        public ActionResult Index(int postID, string title, string name, string website, string comment)
         {
+            Comment comm = new Comment
+            {
+                Title = title,
+                Name = name,
+                Web = website,
+                Content = comment,
+                Date = DateTime.Now,
+                Post = db.Posts.Find(postID)
+            };
+            db.Comments.Add(comm);
+            db.SaveChanges();
             return View(db.Posts.ToList());
         }
 

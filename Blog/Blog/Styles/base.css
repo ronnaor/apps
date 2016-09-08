@@ -26,13 +26,22 @@ body {
     font-family: myFont, 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     background: #F0F0F0;
 }
-h1 {
+h1#title {
     text-shadow: 3px 3px #DDDDDD;
+    font-size: 40px;
+    text-decoration: underline;
+    color: mediumseagreen;
 }
 h1, h2 {
 	font-size: 28px;
 	line-height: 44px;
 	padding: 22px 0;
+}
+
+h2#empty {
+    color:forestgreen;
+    text-decoration: underline;
+    font-weight: bold;
 }
 
 h3 {
@@ -368,6 +377,12 @@ aside section ul li a:hover {
     color: #777;
 }
 	
+.blogPost header h2 {
+    font-size: 36px;
+    color: steelblue;
+    text-decoration:underline;
+}
+
 .blogPost header p a:hover {
 	text-decoration: none;
 	color: #000;
@@ -383,8 +398,8 @@ aside section ul li a:hover {
 
 .blogPost video {
 	margin: 12px 0;
-	width: 100%;
-	height: auto;
+	width: auto;
+	height: 250px;
 	-webkit-box-shadow: 3px 3px 7px #777;
 }
 
@@ -393,19 +408,34 @@ aside section ul li a:hover {
 ------------------------------*/
 
 #comments {
-	margin-top: 21px;
-	padding-top: 22px;
+	margin-top: 10px;
+	padding-top: 10px;
 	border-top: 1px solid #d7d7d7;
 }
 
 #comments article {
 	display: table;
 	padding: 22px;
+    width: 100%;
+}
+
+#comments h3 {
+    text-decoration: underline;
+    font-size: 20px;
+    color:chocolate;
 }
 	
 #comments article:nth-child(odd) {
 	padding: 21px;
-	background: #E3E3E3;
+	background-color: aliceblue;
+	border: 1px solid #d7d7d7;
+	-moz-border-radius: 11px;
+	-webkit-border-radius: 11px;
+}
+
+#comments article:nth-child(even) {
+	padding: 21px;
+	background-color: azure;
 	border: 1px solid #d7d7d7;
 	-moz-border-radius: 11px;
 	-webkit-border-radius: 11px;
@@ -416,11 +446,18 @@ aside section ul li a:hover {
 	width: 220px;
 	padding-right: 22px;
 }
+
+#comments article header h4 {
+	display: block;
+	font-weight: bold;
+    text-decoration:underline;
+}
 		
 #comments article header a {
 	display: block;
-	font-weight: bold;
-	color: #000;
+	font-size: 14px;
+    font-style: italic;
+    color: #777;
 }
 			
 #comments article header a:hover {
@@ -435,10 +472,25 @@ aside section ul li a:hover {
 /*------------------------------
 =COMMENT FORM
 ------------------------------*/
+.addComment {
+    border: 1px solid black ;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
 form {
-	margin-top: 21px;
-	padding-top: 22px;
-	border-top: 1px solid #d7d7d7;
+	padding-top: 15px;
+    font-weight: bold;
+}
+
+form h3 {
+    color:chocolate;
+    font-size: 20px;
+    text-align: left;
+    text-decoration: underline;
+    padding: 0 22px;
+    margin-bottom: 15px;
+	padding-bottom: 15px;
 }
 
 form p {
@@ -449,9 +501,8 @@ form p {
 
 form label {
 	display: table-cell;
-	width: 140px;
-	padding-right: 20px;
-	text-align: right;
+	width: 80px;
+	text-align: left;
 	font-weight: bold;
 	vertical-align: top;
 }
@@ -461,18 +512,19 @@ form input[type="text"], form input[type="email"], form input[type="url"] {
 	width: 300px;
 	height: 20px;
 	border: 1px solid #d7d7d7;
+    text-align: left;
 }
 		
 form textarea {
 	width: 300px;
 	height: 100px;
 	border: 1px solid #d7d7d7;
+    text-align: left;
 }
 		
 form input[type="submit"] {
 	margin-left: 162px;
 }
-
 
 
 /*------------------------------
