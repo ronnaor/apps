@@ -4,19 +4,19 @@
     ViewBag.Title = "Error";
 }
 @section head {
-    @Styles.Render("~/Styles/FanClub.css")
+    @Styles.Render("~/Styles/blog.css")
 }
 
 @{
     if ((ViewBag.ErrorMsg != null))
     {
-        <h2 id="FanClubTitle">
+        <h2 id="BlogTitle">
             Error: @ViewBag.ErrorMsg
         </h2>
     }
     else
     {
-        <h2 id="FanClubTitle">
+        <h2 id="BlogTitle">
             Error
         </h2>
     }

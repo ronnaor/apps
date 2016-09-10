@@ -4,77 +4,52 @@
     ViewBag.Title = "Delete";
 }
 
-<h2>Delete</h2>
+@section head {
+    @Styles.Render("~/Styles/blog.css")
+}
 
-<h3>Are you sure you want to delete this?</h3>
+<h2 id="BlogTitle">Are you sure you want to delete this post?</h2>
+
 <div>
-    <h4>Post</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
+    <table class="table-horizontal">
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Title)</th>
+            <td>@Html.DisplayFor(model => model.Title)</td>
+        </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Name)</th>
+            <td>@Html.DisplayFor(model => model.Name)</td>
+        </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Web)</th>
+            <td>@Html.DisplayFor(model => model.Web)</td>
+        </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Date)</th>
+            <td>@Html.DisplayFor(model => model.Date)</td>
+        </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Content)</th>
+            <td>@Html.DisplayFor(model => model.Content)</td>
+        </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Image)</th>
+            <td>@Html.DisplayFor(model => model.Image)</td>
+        </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Video)</th>
+            <td>@Html.DisplayFor(model => model.Video)</td>
+        </tr>
+    </table>
 
-        <dd>
-            @Html.DisplayFor(model => model.Title)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Web)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Web)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Date)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Date)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Content)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Content)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Image)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Image)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Video)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Video)
-        </dd>
-
-    </dl>
-
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            <input type="submit" value="Delete" class="link" />
+            @Html.ActionLink("Back to List", "Index", null, new { @class = "link" })
         </div>
     }
 </div>
+

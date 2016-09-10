@@ -86,7 +86,6 @@ namespace Blog.Controllers
                 return RedirectToAction("Error");
             }
             return View(fan);
-
         }
 
         // POST: FanClub/Edit
@@ -103,7 +102,7 @@ namespace Blog.Controllers
             return View(fan);
         }
 
-        // GET: First/Delete
+        // GET: FanClub/Delete
         public ActionResult Delete(int? id)
         {
             if (!id.HasValue)
@@ -119,7 +118,7 @@ namespace Blog.Controllers
             }
             return View(fan);
         }
-        // POST: /Fans/Delete/5
+        // POST: /FanClub/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

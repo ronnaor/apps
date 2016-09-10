@@ -161,6 +161,7 @@
     <Content Include="scripts\bootstrap.js" />
     <Content Include="scripts\bootstrap.min.js" />
     <None Include="scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="scripts\funcs.js" />
     <Content Include="scripts\jquery-1.10.2.js" />
     <Content Include="scripts\jquery-1.10.2.min.js" />
     <None Include="scripts\jquery.validate-vsdoc.js" />
@@ -170,6 +171,7 @@
     <Content Include="scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="scripts\modernizr-2.6.2.js" />
     <Content Include="Styles\base.css" />
+    <Content Include="Styles\blog.css" />
     <Content Include="Styles\FanClub.css" />
     <Content Include="Web.config" />
     <Content Include="Views\FanClub\Create.cshtml" />
@@ -213,6 +215,7 @@
     <Content Include="Views\Blog\Edit.cshtml" />
     <Content Include="Views\Blog\Index.cshtml" />
     <Content Include="Views\BlogGuests\Index.cshtml" />
+    <Content Include="Views\Blog\Error.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

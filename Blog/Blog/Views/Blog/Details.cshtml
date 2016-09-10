@@ -4,71 +4,54 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+@section head {
+    @Styles.Render("~/Styles/blog.css")
+}
 
-<div>
-    <h4>Post</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
+<section>
+    <article class="blogPost">
+        <header>
+            <h2>@Html.DisplayFor(modelItem => Model.Title)</h2>
+            <p>Posted on @Html.DisplayFor(modelItem => Model.Date) by <a href="@Model.Web">@Html.DisplayFor(modelItem => Model.Name)</a> - <a href="#@Model.Title">@Model.Comments.Count() comments</a></p>
+        </header>
+        <div>
+            @if (!String.IsNullOrEmpty(Model.Image))
+            {
+                <img src="@Model.Image" alt="Image" />
+            }
+            <p>@Html.DisplayFor(modelItem => Model.Content)</p>
+            @if (!String.IsNullOrEmpty(Model.Video))
+            {
+                <video controls="controls">
+                    <source src="@Model.Video" />
+                    Your browser does not support the video tag.
+                </video>
+            }
+        </div>
+    </article>
+</section>
 
-        <dd>
-            @Html.DisplayFor(model => model.Title)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Web)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Web)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Date)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Date)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Content)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Content)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Image)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Image)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Video)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Video)
-        </dd>
-
-    </dl>
-</div>
+<section id="comments">
+    <h3 id="@Model.Title">Comments for @Model.Title:</h3>
+    @if (Model.Comments != null)
+            {
+                foreach (var comment in Model.Comments)
+                {
+            <article>
+                <header>
+                    <h4>@Html.DisplayFor(modelItem => comment.Title)</h4>
+                    <a href="@comment.Web">@Html.DisplayFor(modelItem => comment.Name)</a>
+                    <time>@Html.DisplayFor(modelItem => comment.Date) </time>
+                </header>
+                <p>@Html.DisplayFor(modelItem => comment.Content)</p>
+            </article>
+        }
+    }
+</section>
+<p></p>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.PostID }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "link" })
+    @Html.ActionLink("Edit", "Edit", new { id = Model.PostID }, new { @class = "link" })
+    @Html.ActionLink("Delete", "Delete", new { id = Model.PostID }, new { @class = "link" })
 </p>

@@ -6,7 +6,6 @@
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/bootstrap.css")
     @Styles.Render("~/Styles/base.css")
-    @Scripts.Render("~/scripts/modernizr")
     @RenderSection("head", required: false)
 </head>
 <body>
@@ -104,8 +103,9 @@
         </div>
     </footer>
 
-    @Scripts.Render("~/Scripts/jquery")
-    @Scripts.Render("~/Scripts/bootstrap")
+    <script type="text/javascript" src="~/scripts/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="~/scripts/bootstrap.js"></script>
+    <script type="text/javascript" src="~/scripts/modernizr-2.6.2.js"></script>
     @RenderSection("scripts", required: false)
 </body>
 </html>

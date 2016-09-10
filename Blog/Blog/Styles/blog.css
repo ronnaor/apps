@@ -1,0 +1,96 @@
+﻿h2#BlogTitle{
+    font-size: 28px;
+	line-height: 44px;
+	padding: 10px 0;
+    color:  darkcyan;
+}
+
+table{
+    padding-bottom: 20px;
+}
+
+th td{
+    border: 1px solid black;
+    text-align: center;
+    width: 10%;
+    text-align:center;
+    padding-top:5px;
+}
+
+th {
+    background-color: honeydew;
+}
+
+td{
+    background-color: aliceblue;
+}
+.link{
+    background-color:paleturquoise ;
+    font: bold 11px Arial;
+    text-decoration: none;
+    color: #333333;
+    padding: 8px 8px 8px 8px;
+    border-top: 1px solid yellow;
+    border-right: 1px solid yellow;
+    border-bottom: 1px solid yellow;
+    border-left: 1px solid yellow;
+    
+}
+
+.form-horizontal{
+    border: 5px thick #1F497D;
+    background: #F0F0F0;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.text-danger {
+    display: block;
+    color: red;
+}
+
+
+.form-control.text-box.single-line{
+    height:auto;
+    width : 100%;
+}
+
+.form-control.text-box{
+    height: 150px;
+    width : 100%;
+}
+
+
+.btn{
+    background-color: paleturquoise;
+}
+
+.table-horizontal{
+    border: 3px solid #1F497D;
+    background: #F0F0F0;;
+    border-radius: 5px;
+    width: 300px;
+    margin-bottom:15px;
+}
+
+.table-horizontal th{
+    text-align: left;
+    padding-bottom:6px;
+    padding-top:6px;
+    width: 100px;
+    background-color: cornsilk;
+}
+
+.table-horizontal td{
+    text-align: left;
+    padding-bottom:6px;
+    padding-top:6px;
+    background-color: cornsilk;
+}
+
+.col-md-2{
+    width: 110px;
+}
+
+
+

@@ -21,17 +21,29 @@ namespace Blog.Controllers
             return View(db.Posts.ToList());
         }
 
+        // GET: FanClub/Error
+        public ActionResult Error()
+        {
+            if (TempData["ErrorMsg"] != null)
+            {
+                ViewBag.ErrorMsg = TempData["ErrorMsg"];
+            }
+            return View();
+        }
+
         // GET: Blog/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                TempData["ErrorMsg"] = "No ID";
+                return RedirectToAction("Error");
             }
             Post post = db.Posts.Find(id);
             if (post == null)
             {
-                return HttpNotFound();
+                TempData["ErrorMsg"] = "No ID";
+                return RedirectToAction("Error");
             }
             return View(post);
         }
@@ -62,14 +74,16 @@ namespace Blog.Controllers
         // GET: Blog/Edit/5
         public ActionResult Edit(int? id)
         {
-            if (id == null)
+            if (!id.HasValue)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                TempData["ErrorMsg"] = "No ID";
+                return RedirectToAction("Error");
             }
             Post post = db.Posts.Find(id);
             if (post == null)
             {
-                return HttpNotFound();
+                TempData["ErrorMsg"] = "Error with edit";
+                return RedirectToAction("Error");
             }
             return View(post);
         }
@@ -93,14 +107,16 @@ namespace Blog.Controllers
         // GET: Blog/Delete/5
         public ActionResult Delete(int? id)
         {
-            if (id == null)
+            if (!id.HasValue)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                TempData["ErrorMsg"] = "No ID";
+                return RedirectToAction("Error");
             }
             Post post = db.Posts.Find(id);
             if (post == null)
             {
-                return HttpNotFound();
+                TempData["ErrorMsg"] = "No Data";
+                return RedirectToAction("Error");
             }
             return View(post);
         }

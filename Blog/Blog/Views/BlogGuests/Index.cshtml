@@ -12,13 +12,13 @@
 }
 else
 {
-    foreach (var item in Model)
+    foreach (var item in Model.Reverse())
     {
         <section>
             <article class="blogPost">
                 <header>
                     <h2>@Html.DisplayFor(modelItem => item.Title)</h2>
-                    <p>Posted on @Html.DisplayFor(modelItem => item.Date) by <a href="@item.Web">@Html.DisplayFor(modelItem => item.Name)</a> - <a href="#comments">@item.Comments.Count() comments</a></p>
+                    <p>Posted on @Html.DisplayFor(modelItem => item.Date) by <a href="@item.Web">@Html.DisplayFor(modelItem => item.Name)</a> - <a href="#@item.Title">@item.Comments.Count() comments</a></p>
                 </header>
                 <div>
                     @if (!String.IsNullOrEmpty(item.Image))
@@ -30,7 +30,7 @@ else
                     @if (!String.IsNullOrEmpty(item.Video))
                     {
                         <video controls="controls">
-                            <source src="@item.Video" type='video/mp4'/>
+                            <source src="@item.Video" />
                             Your browser does not support the video tag.
                         </video>
                     }
@@ -39,7 +39,7 @@ else
         </section>
 
         <section id="comments">
-            <h3>Comments for @item.Title:</h3>
+            <h3 id="@item.Title">Comments for @item.Title:</h3>
             @if (item.Comments != null)
             {
                 foreach (var comment in item.Comments)
