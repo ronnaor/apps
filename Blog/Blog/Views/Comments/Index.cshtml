@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Blog.Models.Comment>
+
+@section head {
+    @Styles.Render("~/Styles/comments.css")
+}
+
+@{
+    ViewBag.Title = "Comments List";
+}
+
+
+<section id="comments">
+    <h3 id= @ViewBag.postName>Comments for @ViewBag.postName:</h3>
+    @if (ViewBag.commentsCount != 0)
+    {
+        foreach (var comment in Model)
+        {
+            <article>
+                <header>
+                    <h4>@Html.DisplayFor(modelItem => comment.Title)</h4>
+                    <a href="@comment.Web">@Html.DisplayFor(modelItem => comment.Name)</a>
+                    <time>@Html.DisplayFor(modelItem => comment.Date) </time>
+                </header>
+                <p>@Html.DisplayFor(modelItem => comment.Content)</p>
+                @Html.ActionLink("Delete", "Delete", new { id = comment.CommentID }, new { @class = "link" })
+            </article>
+        }
+    }
+    else
+    {
+        <h2 id="CommentsTitle"> No comments for this Post </h2>
+    }
+</section>
+
+<p></p>
+<p>
+    @Html.ActionLink("Back to posts", "Index", "Blog", null, new { @class = "link" })
+</p>   

@@ -23,3 +23,8 @@ $(':checkbox#imageCheck').change(function () {
         $(".image1 .form-control").val('');
     }
 });
+
+
+function showValue(newValue) {
+    document.getElementById("range").innerHTML = newValue;
+}

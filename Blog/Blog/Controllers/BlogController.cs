@@ -8,6 +8,8 @@ using System.Web;
 using System.Web.Mvc;
 using Blog.DAL;
 using Blog.Models;
+using System.Data.Entity.Core.Objects;
+using System.Web.Routing;
 
 namespace Blog.Controllers
 {
@@ -16,10 +18,43 @@ namespace Blog.Controllers
         private BlogDBContext db = new BlogDBContext();
 
         // GET: Blog
-        public ActionResult Index()
+        public ActionResult Index(DateTime? date, string postTitle, string postAuthor, string words, int? comments)
         {
-            return View(db.Posts.ToList());
+            var TitleList = new List<string>();
+            var TitleQry = from p in db.Posts orderby p.Title select p.Title;
+            TitleList.AddRange(TitleQry.Distinct());
+            ViewBag.postTitle = new SelectList(TitleList);
+
+            var AuthorList = new List<string>();
+            var AuthorQry = from p in db.Posts orderby p.Name select p.Name;
+            AuthorList.AddRange(AuthorQry.Distinct());
+            ViewBag.postAuthor = new SelectList(AuthorList);
+
+            var posts = from p in db.Posts select p;
+            if (!(date == DateTime.MinValue) && !(date == null))
+            {
+                posts = posts.Where(x => (x.Date.Day == date.Value.Day) && (x.Date.Month == date.Value.Month) && (x.Date.Year == date.Value.Year));
+            }
+            if (!String.IsNullOrEmpty(postTitle))
+            {
+                posts = posts.Where(x => x.Title == postTitle);
+            }
+            if (!String.IsNullOrEmpty(postAuthor))
+            {
+                posts = posts.Where(x => x.Name == postAuthor);
+            }
+            if (!String.IsNullOrEmpty(words))
+            {
+                posts = posts.Where(x => (x.Content.Contains(words)) || (x.Title.Contains(words)));
+            }
+            if (!(comments == null))
+            {
+                posts = posts.Where(x => x.Comments.Count() >= comments);
+            }
+
+            return View(posts);
         }
+
 
         // GET: FanClub/Error
         public ActionResult Error()
@@ -102,6 +137,12 @@ namespace Blog.Controllers
                 return RedirectToAction("Index");
             }
             return View(post);
+        }
+
+        // GET: Blog/Comments/5
+        public ActionResult Comments(int? id)
+        {
+            return RedirectToAction("index", new RouteValueDictionary(new { controller = "Comments", action = "index", Id = id }));
         }
 
         // GET: Blog/Delete/5

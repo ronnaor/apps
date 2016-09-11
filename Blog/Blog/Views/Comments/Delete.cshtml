@@ -1,17 +1,21 @@
-﻿@model Blog.Models.Post
+﻿@model Blog.Models.Comment
+
+@section head {
+    @Styles.Render("~/Styles/comments.css")
+}
 
 @{
     ViewBag.Title = "Delete";
 }
 
-@section head {
-    @Styles.Render("~/Styles/blog.css")
-}
-
-<h2 id="BlogTitle">Are you sure you want to delete this post?</h2>
+<h2 id="BlogTitle">Are you sure you want to delete this Comment?</h2>
 
 <div>
     <table class="table-horizontal">
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Post.Title)</th>
+            <td>@Html.DisplayFor(model => model.Post.Title)</td>
+        </tr>
         <tr>
             <th>@Html.DisplayNameFor(model => model.Title)</th>
             <td>@Html.DisplayFor(model => model.Title)</td>
@@ -25,31 +29,23 @@
             <td>@Html.DisplayFor(model => model.Web)</td>
         </tr>
         <tr>
-            <th>@Html.DisplayNameFor(model => model.Date)</th>
-            <td>@Html.DisplayFor(model => model.Date)</td>
-        </tr>
-        <tr>
             <th>@Html.DisplayNameFor(model => model.Content)</th>
             <td>@Html.DisplayFor(model => model.Content)</td>
         </tr>
         <tr>
-            <th>@Html.DisplayNameFor(model => model.Image)</th>
-            <td>@Html.DisplayFor(model => model.Image)</td>
-        </tr>
-        <tr>
-            <th>@Html.DisplayNameFor(model => model.Video)</th>
-            <td>@Html.DisplayFor(model => model.Video)</td>
+            <th>@Html.DisplayNameFor(model => model.Date)</th>
+            <td>@Html.DisplayFor(model => model.Date)</td>
         </tr>
     </table>
-
+        
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
 
         <p class="form-actions no-color">
-            <input type="submit" value="Delete" class="link" />
-            @Html.ActionLink("Back to List", "Index", null, new { @class = "link" })
+            <input type="submit" value="Delete" class="link" /> 
+            @Html.ActionLink("Back to List", "Index", null, new { id = Model.PostID }, new { @class = "link" })
+            @Html.ActionLink("Back to posts", "Index", "Blog", null, new { @class = "link" })
         </p>
     }
 </div>
-

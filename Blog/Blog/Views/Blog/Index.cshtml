@@ -1,69 +1,114 @@
 ﻿@model IEnumerable<Blog.Models.Post>
 
-@{
-    ViewBag.Title = "Index";
+@section head {
+    @Styles.Render("~/Styles/blog.css")
 }
 
-<h2>Index</h2>
+@{
+    ViewBag.Title = "Posts Lists";
+}
+
+
+<section id="search">
+    <!-- Search -->
+    @using (Html.BeginForm())
+    {
+        <fieldset>
+            <legend>Search post:</legend>
+            <table>
+                <tr>
+                    <td>
+                        <label for="date">Date Of Publish:</label> 
+                    <td>
+                        <input type="date" name="date" id="date">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="postTitle">Title:</label>
+                    </td>
+                    <td>
+                        @Html.DropDownList("postTitle" , "All")
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="postAuthor">Author:</label>
+                    </td>
+                    <td>
+                        @Html.DropDownList("postAuthor", "All")
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="words">Words in post:</label>
+                    </td>
+                    <td>
+                        @Html.TextBox("words", "", new { placeholder = "Enter words from the post" })
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="comments">Minimum Comments:</label>
+                    </td>
+                    <td>
+                        <input type="range" name="comments" id="comments" min="0" max="20" value="0" onchange="showValue(this.value)">
+                        <span id="range">0</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="submit" colspan="2">
+                        <input type="submit" value="Search">
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+    }
+</section>
+
+<h2 id="BlogTitle">posts:</h2>
+
+<table class="table">
+    @if (!Model.Any())
+    {
+        <tr><td>There are no posts found</td></tr>
+    }
+    else
+    {
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th></th>
+        </tr>
+
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.PostID }, new { @class = "link" }) 
+                    @Html.ActionLink("Details", "Details", new { id = item.PostID }, new { @class = "link" })
+                    @Html.ActionLink("Comments", "Comments", new { id = item.PostID }, new { @class = "link" }) 
+                    @Html.ActionLink("Delete", "Delete", new { id = item.PostID }, new { @class = "link" })
+                </td>
+            </tr>
+        }
+    }
+    </table>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Add New Post", "Create", null, new { @class = "link" })
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Web)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Date)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Content)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Image)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Video)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Web)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Date)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Content)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Image)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Video)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.PostID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.PostID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.PostID })
-        </td>
-    </tr>
+@section scripts {
+    <script type="text/javascript" src="~/scripts/funcs.js"></script>
 }
-
-</table>

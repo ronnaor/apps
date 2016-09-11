@@ -172,6 +172,7 @@
     <Content Include="scripts\modernizr-2.6.2.js" />
     <Content Include="Styles\base.css" />
     <Content Include="Styles\blog.css" />
+    <Content Include="Styles\comments.css" />
     <Content Include="Styles\FanClub.css" />
     <Content Include="Web.config" />
     <Content Include="Views\FanClub\Create.cshtml" />
@@ -185,6 +186,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\BlogGuestsController.cs" />
+    <Compile Include="Controllers\CommentsController.cs" />
     <Compile Include="Controllers\FanClubController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -216,6 +218,9 @@
     <Content Include="Views\Blog\Index.cshtml" />
     <Content Include="Views\BlogGuests\Index.cshtml" />
     <Content Include="Views\Blog\Error.cshtml" />
+    <Content Include="Views\Comments\Delete.cshtml" />
+    <Content Include="Views\Comments\Index.cshtml" />
+    <Content Include="Views\Comments\Error.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
