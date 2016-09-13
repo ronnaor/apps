@@ -4,13 +4,13 @@
 
 /* Makeshift CSS Reset */
 * {
-    margin: 0;
-    padding: 0;
+	margin: 0;
+	padding: 0;
 }
 
 /* Tell the browser to render HTML 5 elements as block */
-header, footer, section, aside, nav, article {
-    display: block;
+header, footer, section,aside, nav, article {
+	display: block;
 }
 
 @font-face {
@@ -19,18 +19,30 @@ header, footer, section, aside, nav, article {
    src: url("/fonts/Danoisemedium.otf") format('opentype');
 }
 
+@media only screen and (max-device-width: 576px){
+    aside {
+	    display: table-cell;
+	    width: 300px;
+	    background: rgba(228,228,228,255); /* For browsers that do not support gradients */
+	    background: -webkit-linear-gradient(left, rgba(215,215,215,255) , rgba(240,240,240,255)); /* For Safari 5.1 to 6.0 */
+	    background: -o-linear-gradient(right, rgba(215,215,215,255), rgba(240,240,240,255)); /* For Opera 11.1 to 12.0 */
+	    background: -moz-linear-gradient(right, rgba(215,215,215,255), rgba(240,240,240,255)); /* For Firefox 3.6 to 15 */
+	    background: linear-gradient(to right, rgba(215,215,215,255) , rgba(240,240,240,255)); /* Standard syntax */
+}
+}
+
 body {
-    margin: 0 auto;
-    padding: 22px 0;
-    width: 940px;
-    font-family: myFont, 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    background: #F0F0F0;
+	margin: 0 auto;
+	padding: 22px 0;
+	width: 940px;
+	font-family: myFont, 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+	background: #F0F0F0;
 }
 h1#title {
-    text-shadow: 3px 3px #DDDDDD;
-    font-size: 40px;
-    text-decoration: underline;
-    color: mediumseagreen;
+	text-shadow: 3px 3px #DDDDDD;
+	font-size: 20px;
+	text-decoration: underline;
+	color: mediumseagreen;
 }
 h1, h2 {
 	font-size: 28px;
@@ -39,9 +51,9 @@ h1, h2 {
 }
 
 h2#empty {
-    color:forestgreen;
-    text-decoration: underline;
-    font-weight: bold;
+	color:forestgreen;
+	text-decoration: underline;
+	font-weight: bold;
 }
 
 h3 {
@@ -60,47 +72,6 @@ p {
 =NAVIGATION
 ------------------------------*/
 
-nav {
-	position: absolute;
-	left: 0;
-	width: 100%;
-	
-    background: black; /* For browsers that do not support gradients */
-    background: -webkit-linear-gradient(#FF333333, #FF222222); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(#FF333333, #FF222222)); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(#FF333333, #FF222222); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(#FF333333, #FF222222); /* Standard syntax */
-}
-
-nav ul {
-    margin: 0 auto;
-    width: 940px;
-    list-style: none;
-}
-
-nav ul li {
-	float: left;
-}
-		
-nav ul li a {
-	display: block;
-	margin-right: 20px;
-	width: 140px;
-	font-size: 14px;
-	line-height: 44px;
-	text-align: center;
-	text-decoration: none;
-	color: #777;
-}
-			
-nav ul li a:hover {
-	color: #fff;
-}
-			
-nav ul li.selected a {
-	color: #fff;
-}
-			
 nav ul li.subscribe a {
 	margin-left: 0px;
 	padding-left: 0px;
@@ -109,7 +80,7 @@ nav ul li.subscribe a {
 }
 
 nav ul li.limage{
-    margin-top: 10px;
+	margin-top: 10px;
 	margin-left: 0px;
 	padding-left: 0px;
 	text-align: left;
@@ -117,21 +88,40 @@ nav ul li.limage{
 }
 
 nav ul li #transDemo2 div {
-    height:30px;
-    width:30px;
-    text-align:center;
-    -webkit-transition: all 2s ease-in-out;
-    -moz-transition: all 2s ease-in-out;
-    -ms-transition: all 2s ease-in-out;
-    transition: all 2s ease-in-out;
+	height:30px;
+	width:30px;
+	text-align:center;
+	-webkit-transition: all 2s ease-in-out;
+	-moz-transition: all 2s ease-in-out;
+	-ms-transition: all 2s ease-in-out;
+	transition: all 2s ease-in-out;
 }
 
 nav ul li #transDemo2 div:hover, #transDemo2 div.hover_effect {
-    -webkit-transform:rotate(720deg) scale(2,2);
-    -moz-transform:rotate(720deg) scale(2,2);
-    -ms-transform:rotate(720deg) scale(2,2);
-    transform:rotate(720deg) scale(2,2);
+	-webkit-transform:rotate(720deg) scale(2,2);
+	-moz-transform:rotate(720deg) scale(2,2);
+	-ms-transform:rotate(720deg) scale(2,2);
+	transform:rotate(720deg) scale(2,2);
 }
+
+.navbar-inverse .navbar-brand{
+	color: mediumseagreen;
+}
+
+a.navbar-brand{
+	text-shadow: 1px 1px #DDDDDD;
+	text-decoration: underline;
+}
+
+.navbar-inverse{
+    background-color:darkblue;
+    z-index: 10000;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    color: floralwhite;
+}
+
 
 
 
@@ -140,15 +130,16 @@ nav ul li #transDemo2 div:hover, #transDemo2 div.hover_effect {
 ------------------------------*/
 
 #intro {
-    position: relative;
-    margin-top: 66px;
-    padding: 44px;
+	position: relative;
+	margin-top: 66px;
+	padding: 44px;
 	
-    background: rgba(125,170,17,255); /* For browsers that do not support gradients */
-    background: -webkit-linear-gradient(rgba(180,221,16,255), rgba(70,118,18,255)); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(rgba(180,221,16,255), rgba(70,118,18,255)); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(rgba(180,221,16,255), rgba(70,118,18,255)); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(rgba(180,221,16,255), rgba(70,118,18,255)); /* Standard syntax */
+	background: rgba(125,170,17,255); /* For browsers that do not support gradients */
+	background: -webkit-linear-gradient(rgba(180,221,16,255), rgba(70,118,18,255)); /* For Safari 5.1 to 6.0 */
+	background: -o-linear-gradient(rgba(180,221,16,255), rgba(70,118,18,255)); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(rgba(180,221,16,255), rgba(70,118,18,255)); /* For Firefox 3.6 to 15 */
+	background: linear-gradient(rgba(180,221,16,255), rgba(70,118,18,255)); /* Standard syntax */
+
 	
 	/* Background-size not implemented yet */
 	-webkit-background-size: 100%;
@@ -192,127 +183,128 @@ nav ul li #transDemo2 div:hover, #transDemo2 div.hover_effect {
 ------------------------------*/
 
 #search fieldset {
-    border: 5px solid #1F497D;
-    background: #F0F0F0;
-    border-radius: 5px;
-    padding: 5px;
-    width: 500px;
+	border: 5px solid #1F497D;
+	background: #F0F0F0;
+	border-radius: 5px;
+	padding: 5px;
+	width: 500px;
 }
 
 #search fieldset legend {
-    background: #1F497D;
-    color: #fff;
-    padding: 5px 5px ;
-    font-size: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 0 5px #ddd;
-    margin-left: 10px;
+	background: #1F497D;
+	color: #fff;
+	padding: 5px 5px ;
+	font-size: 20px;
+	border-radius: 5px;
+	box-shadow: 0 0 0 5px #ddd;
+	margin-left: 10px;
 }
 
 #search td label {
-    text-align: left;
-    width: 100%;
+	text-align: left;
+	width: 100%;
 }
 
 #search td.submit {
-    padding-top: 5px;
-    text-align: right;
+	padding-top: 5px;
+	text-align: right;
 }
 
 #search td.submit input[type=submit] {
-    font-size: 20px;
-    
+	font-size: 20px;
+	
 }
 
 #search input[type=range] {
-    -webkit-appearance: none;
-    width: 100%;
-    margin: 13.8px 0;
+	-webkit-appearance: none;
+	width: 100%;
+	margin: 13.8px 0;
 }
 #search input[type=range]:focus {
-    outline: none;
+	outline: none;
 }
 #search input[type=range]::-webkit-slider-runnable-track {
-    width: 100%;
-    height: 8.4px;
-    cursor: pointer;
-    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
-    background: #6371a9;
-    border-radius: 1.3px;
-    border: 0.2px solid #010101;
+	width: 100%;
+	height: 8.4px;
+	cursor: pointer;
+	box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+	background: #6371a9;
+	border-radius: 1.3px;
+	border: 0.2px solid #010101;
 }
 #search input[type=range]::-webkit-slider-thumb {
-    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
-    border: 1px solid #000000;
-    height: 36px;
-    width: 16px;
-    border-radius: 3px;
-    background: rgba(251, 255, 255, 0.49);
-    cursor: pointer;
-    -webkit-appearance: none;
-    margin-top: -14px;
+	box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+	border: 1px solid #000000;
+	height: 36px;
+	width: 16px;
+	border-radius: 3px;
+	background: rgba(251, 255, 255, 0.49);
+	cursor: pointer;
+	-webkit-appearance: none;
+	margin-top: -14px;
 }
 #search input[type=range]:focus::-webkit-slider-runnable-track {
-    background: #7d89b7;
+	background: #7d89b7;
 }
 #search input[type=range]::-moz-range-track {
-    width: 100%;
-    height: 8.4px;
-    cursor: pointer;
-    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
-    background: #6371a9;
-    border-radius: 1.3px;
-    border: 0.2px solid #010101;
+	width: 100%;
+	height: 8.4px;
+	cursor: pointer;
+	box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+	background: #6371a9;
+	border-radius: 1.3px;
+	border: 0.2px solid #010101;
 }
 #search input[type=range]::-moz-range-thumb {
-    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
-    border: 1px solid #000000;
-    height: 36px;
-    width: 16px;
-    border-radius: 3px;
-    background: rgba(251, 255, 255, 0.49);
-    cursor: pointer;
+	box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+	border: 1px solid #000000;
+	height: 36px;
+	width: 16px;
+	border-radius: 3px;
+	background: rgba(251, 255, 255, 0.49);
+	cursor: pointer;
 }
 #search input[type=range]::-ms-track {
-    width: 100%;
-    height: 8.4px;
-    cursor: pointer;
-    background: transparent;
-    border-color: transparent;
-    color: transparent;
+	width: 100%;
+	height: 8.4px;
+	cursor: pointer;
+	background: transparent;
+	border-color: transparent;
+	color: transparent;
 }
 #search input[type=range]::-ms-fill-lower {
-    background: #515e92;
-    border: 0.2px solid #010101;
-    border-radius: 2.6px;
-    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+	background: #515e92;
+	border: 0.2px solid #010101;
+	border-radius: 2.6px;
+	box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
 }
 #search input[type=range]::-ms-fill-upper {
-    background: #6371a9;
-    border: 0.2px solid #010101;
-    border-radius: 2.6px;
-    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+	background: #6371a9;
+	border: 0.2px solid #010101;
+	border-radius: 2.6px;
+	box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
 }
 #search input[type=range]::-ms-thumb {
-    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
-    border: 1px solid #000000;
-    height: 36px;
-    width: 16px;
-    border-radius: 3px;
-    background: rgba(251, 255, 255, 0.49);
-    cursor: pointer;
-    height: 8.4px;
+	box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+	border: 1px solid #000000;
+	height: 36px;
+	width: 16px;
+	border-radius: 3px;
+	background: rgba(251, 255, 255, 0.49);
+	cursor: pointer;
+	height: 8.4px;
 }
 #search input[type=range]:focus::-ms-fill-lower {
-    background: #6371a9;
+	background: #6371a9;
 }
 #search input[type=range]:focus::-ms-fill-upper {
-    background: #7d89b7;
+	background: #7d89b7;
 }
 
 /*------------------------------
 =CONTENT AREA AND SIDEBAR LAYOUT
 ------------------------------*/
+
 
 #content {
 	display: table;
@@ -328,10 +320,12 @@ aside {
 	display: table-cell;
 	width: 300px;
 	background: rgba(228,228,228,255); /* For browsers that do not support gradients */
-    background: -webkit-linear-gradient(left, rgba(215,215,215,255) , rgba(240,240,240,255)); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(right, rgba(215,215,215,255), rgba(240,240,240,255)); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(right, rgba(215,215,215,255), rgba(240,240,240,255)); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(to right, rgba(215,215,215,255) , rgba(240,240,240,255)); /* Standard syntax */
+	background: -webkit-linear-gradient(left, rgba(215,215,215,255) , rgba(240,240,240,255)); /* For Safari 5.1 to 6.0 */
+	background: -o-linear-gradient(right, rgba(215,215,215,255), rgba(240,240,240,255)); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(right, rgba(215,215,215,255), rgba(240,240,240,255)); /* For Firefox 3.6 to 15 */
+	background: linear-gradient(to right, rgba(215,215,215,255) , rgba(240,240,240,255)); /* Standard syntax */
+       
+ 
 }
 
 
@@ -343,10 +337,10 @@ aside section {
 	padding: 11px 22px;
 
 	background: rgba(220,220,220,13); /* For browsers that do not support gradients */
-    background: -webkit-linear-gradient(rgba(200,200,200,13), rgba(240,240,240,13)); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(rgba(200,200,200,13), rgba(240,240,240,13)); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(rgba(200,200,200,13), rgba(240,240,240,13)); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(rgba(200,200,200,13), rgba(240,240,240,13)); /* Standard syntax */
+	background: -webkit-linear-gradient(rgba(200,200,200,13), rgba(240,240,240,13)); /* For Safari 5.1 to 6.0 */
+	background: -o-linear-gradient(rgba(200,200,200,13), rgba(240,240,240,13)); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(rgba(200,200,200,13), rgba(240,240,240,13)); /* For Firefox 3.6 to 15 */
+	background: linear-gradient(rgba(200,200,200,13), rgba(240,240,240,13)); /* Standard syntax */
 	
 	/* Border-radius not implemented yet */
 	-moz-border-radius: 11px;
@@ -354,8 +348,8 @@ aside section {
 }
 
 aside section ul {
-    margin: 0 0 0 22px;
-    list-style: none;
+	margin: 0 0 0 22px;
+	list-style: none;
 }
 	
 aside section ul li a {
@@ -372,15 +366,15 @@ aside section ul li a:hover {
 =BLOG POST
 ------------------------------*/
 .blogPost header p, .blogPost header p a {
-    font-size: 14px;
-    font-style: italic;
-    color: #777;
+	font-size: 14px;
+	font-style: italic;
+	color: #777;
 }
 	
 .blogPost header h2 {
-    font-size: 36px;
-    color: steelblue;
-    text-decoration:underline;
+	font-size: 36px;
+	color: steelblue;
+	text-decoration:underline;
 }
 
 .blogPost header p a:hover {
@@ -390,8 +384,8 @@ aside section ul li a:hover {
 
 
 .blogPost img {
-    width: 200px;
-    height: 200px;
+	width: 200px;
+	height: 200px;
 	margin: 22px 0;
 	-webkit-box-shadow: 3px 3px 7px #777;
 }
@@ -416,13 +410,13 @@ aside section ul li a:hover {
 #comments article {
 	display: table;
 	padding: 22px;
-    width: 100%;
+	width: 100%;
 }
 
 #comments h3 {
-    text-decoration: underline;
-    font-size: 20px;
-    color:chocolate;
+	text-decoration: underline;
+	font-size: 20px;
+	color:chocolate;
 }
 	
 #comments article:nth-child(odd) {
@@ -450,14 +444,14 @@ aside section ul li a:hover {
 #comments article header h4 {
 	display: block;
 	font-weight: bold;
-    text-decoration:underline;
+	text-decoration:underline;
 }
 		
 #comments article header a {
 	display: block;
 	font-size: 14px;
-    font-style: italic;
-    color: #777;
+	font-style: italic;
+	color: #777;
 }
 			
 #comments article header a:hover {
@@ -473,23 +467,23 @@ aside section ul li a:hover {
 =COMMENT FORM
 ------------------------------*/
 .addComment {
-    border: 1px solid black ;
-    margin-top: 15px;
-    margin-bottom: 15px;
+	border: 1px solid black ;
+	margin-top: 15px;
+	margin-bottom: 15px;
 }
 
 form {
 	padding-top: 15px;
-    font-weight: bold;
+	font-weight: bold;
 }
 
 form h3 {
-    color:chocolate;
-    font-size: 20px;
-    text-align: left;
-    text-decoration: underline;
-    padding: 0 22px;
-    margin-bottom: 15px;
+	color:chocolate;
+	font-size: 20px;
+	text-align: left;
+	text-decoration: underline;
+	padding: 0 22px;
+	margin-bottom: 15px;
 	padding-bottom: 15px;
 }
 
@@ -512,14 +506,14 @@ form input[type="text"], form input[type="email"], form input[type="url"] {
 	width: 300px;
 	height: 20px;
 	border: 1px solid #d7d7d7;
-    text-align: left;
+	text-align: left;
 }
 		
 form textarea {
 	width: 300px;
 	height: 100px;
 	border: 1px solid #d7d7d7;
-    text-align: left;
+	text-align: left;
 }
 		
 form input[type="submit"] {
@@ -578,6 +572,6 @@ footer ul li a {
 }
 
 
-       
+	   
 
 

@@ -9,34 +9,40 @@
     @RenderSection("head", required: false)
 </head>
 <body>
-    <header>
-        <h1 id="title">Ha-Blog Shel Shauli</h1>
-    </header>
-
-    <nav>
-        <!-- Navigation -->
-        <ul>
-            <li class="selected">@Html.ActionLink("Home", "Index", "BlogGuests")</li>
-            <li class="selected">@Html.ActionLink("Blog", "Index", "Blog")</li>
-            <li class="selected">@Html.ActionLink("Fan Club", "Index", "FanClub")</li>
-            <li><a href="#">Contact</a></li>
-            <li class="limage">
-                <div id="transDemo2">
-                    <div class="hover">
-                        <img src=http://www.ashlylorenzana.com/wp-content/uploads/2013/12/12065637851779660844SRD_RSS_Logo.svg_.hi_.png width="22" height="22">
-                    </div>
-                </div>
-            </li>
-            <li class="subscribe"><a href="#">Subscribe via. RSS</a></li>
-        </ul>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Navigation -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand">Ha-Blog Shel Shauli</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li class="selected">@Html.ActionLink("Home", "Index", "BlogGuests")</li>
+                    <li class="selected">@Html.ActionLink("Blog", "Index", "Blog")</li>
+                    <li class="selected">@Html.ActionLink("Fan Club", "Index", "FanClub")</li>
+                    <li><a href="#">Contact</a></li>
+                    <li class="limage">
+                        <div id="transDemo2">
+                            <div class="hover">
+                                <img src=http://www.ashlylorenzana.com/wp-content/uploads/2013/12/12065637851779660844SRD_RSS_Logo.svg_.hi_.png width="22" height="22">
+                            </div>
+                        </div>
+                    </li>
+                    <li class="subscribe"><a href="#">Subscribe via. RSS</a></li>
+                </ul>
+            </div>
+        </div>
     </nav>
-
     <section id="intro">
         <!-- Introduction -->
         <header>
             <h2>Do you have questions for me?</h2>
         </header>
-
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut.</p>
         <img src="~/images/intro_shauli.png" alt="Shauli" />
     </section>
@@ -45,7 +51,7 @@
             @RenderBody()
         </div>
         <aside>
-            <section>
+            <section class="cat">
                 <header>
                     <h3>Categories</h3>
                 </header>
@@ -55,8 +61,7 @@
                     <li><a href="#">Adipisicing elit sed</a></li>
                 </ul>
             </section>
-
-            <section>
+            <section class="arc">
                 <header>
                     <h3>Archives</h3>
                 </header>
@@ -69,7 +74,6 @@
             </section>
         </aside>
     </div>
-
     <footer>
         <!-- Footer -->
         <div>
@@ -79,7 +83,6 @@
                 </header>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut la</p>
             </section>
-
             <section id="blogroll">
                 <header>
                     <h3>Blogroll</h3>
@@ -89,7 +92,6 @@
                     <li><a href="#">FreelanceSwitch</a></li>
                 </ul>
             </section>
-
             <section id="popular">
                 <header>
                     <h3>Popular</h3>
@@ -102,7 +104,6 @@
             </section>
         </div>
     </footer>
-
     <script type="text/javascript" src="~/scripts/jquery-1.10.2.js"></script>
     <script type="text/javascript" src="~/scripts/bootstrap.js"></script>
     <script type="text/javascript" src="~/scripts/modernizr-2.6.2.js"></script>
