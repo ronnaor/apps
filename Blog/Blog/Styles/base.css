@@ -19,17 +19,6 @@ header, footer, section,aside, nav, article {
    src: url("/fonts/Danoisemedium.otf") format('opentype');
 }
 
-@media only screen and (max-device-width: 576px){
-    aside {
-	    display: table-cell;
-	    width: 300px;
-	    background: rgba(228,228,228,255); /* For browsers that do not support gradients */
-	    background: -webkit-linear-gradient(left, rgba(215,215,215,255) , rgba(240,240,240,255)); /* For Safari 5.1 to 6.0 */
-	    background: -o-linear-gradient(right, rgba(215,215,215,255), rgba(240,240,240,255)); /* For Opera 11.1 to 12.0 */
-	    background: -moz-linear-gradient(right, rgba(215,215,215,255), rgba(240,240,240,255)); /* For Firefox 3.6 to 15 */
-	    background: linear-gradient(to right, rgba(215,215,215,255) , rgba(240,240,240,255)); /* Standard syntax */
-}
-}
 
 body {
 	margin: 0 auto;
@@ -71,6 +60,11 @@ p {
 /*------------------------------
 =NAVIGATION
 ------------------------------*/
+
+nav{
+    background-color:darkblue;
+    z-index: 10000;
+}
 
 nav ul li.subscribe a {
 	margin-left: 0px;
