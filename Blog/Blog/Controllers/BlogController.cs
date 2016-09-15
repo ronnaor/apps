@@ -94,9 +94,8 @@ namespace Blog.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "PostID,Title,Name,Web,Content,Image,Video")] Post post)
+        public ActionResult Create([Bind(Include = "PostID,Title,Name,Web,Date,Content,Image,Video")] Post post)
         {
-            post.Date = DateTime.Now;
             if (ModelState.IsValid)
             {
                 db.Posts.Add(post);

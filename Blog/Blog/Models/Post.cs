@@ -29,6 +29,7 @@ namespace Blog.Models
 
         [Required(ErrorMessage = "Date is required")]
         [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [Display(Name = "Publish Date:")]
         public DateTime Date { get; set; }
 
