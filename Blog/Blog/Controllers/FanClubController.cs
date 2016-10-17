@@ -16,21 +16,49 @@ namespace Blog.Controllers
         private BlogDBContext db = new BlogDBContext();
 
         // GET: FanClub
-        public ActionResult Index()
+        public ActionResult Index(DateTime? date, string firstName, string lastName, string gender, int? Seniority)
         {
-            return View(db.Fans.ToList());
-        }
+            var FirstNameList = new List<string>();
+            var FirstNameQry = from p in db.Fans orderby p.Name select p.Name;
+            FirstNameList.AddRange(FirstNameQry.Distinct());
+            ViewBag.firstName = new SelectList(FirstNameList);
 
-        // GET: FanClub/Error
-        public ActionResult Error()
-        {
-            if (TempData["ErrorMsg"] != null)
+            var LastNameList = new List<string>();
+            var LastNameQry = from p in db.Fans orderby p.LastName select p.LastName;
+            LastNameList.AddRange(LastNameQry.Distinct());
+            ViewBag.lastName = new SelectList(LastNameList);
+
+            var Gender = new List<string> { "Male" , "Female" };
+            ViewBag.gender = new SelectList(Gender);
+
+            var fans = from p in db.Fans select p;
+            
+            if (!(date == DateTime.MinValue) && !(date == null))
             {
-                ViewBag.ErrorMsg = TempData["ErrorMsg"];
+                fans = fans.Where(x => (x.BirthDate.Day == date.Value.Day) && (x.BirthDate.Month == date.Value.Month) && (x.BirthDate.Year == date.Value.Year));
             }
-            return View();
+            if (!String.IsNullOrEmpty(firstName))
+            {
+                fans = fans.Where(x => x.Name == firstName);
+            }
+            if (!String.IsNullOrEmpty(lastName))
+            {
+                fans = fans.Where(x => x.LastName == lastName);
+            }
+            if (!String.IsNullOrEmpty(gender))
+            {
+                fans = fans.Where(x => x.Gender.ToString() == gender);
+            }
+            if (!(Seniority == null))
+            {
+                fans = fans.Where(x => x.Seniority >= Seniority);
+            }
+
+
+            return View(fans);
         }
 
+       
         // GET:  FanClub/Create
         public ActionResult Create()
         {
@@ -59,14 +87,14 @@ namespace Blog.Controllers
         {
             if (id == null)
             {
-                TempData["ErrorMsg"] = "No ID";
-                return RedirectToAction("Error");
+                ViewBag.ErrorMsg = "No ID";
+                return View("Error");
             }
             Fan fan = db.Fans.Find(id);
             if (fan == null)
             {
-                TempData["ErrorMsg"] = "No ID";
-                return RedirectToAction("Error");
+                ViewBag.ErrorMsg = "No Data";
+                return View("Error");
             }
             return View(fan);
         }
@@ -76,14 +104,14 @@ namespace Blog.Controllers
         {
             if (!id.HasValue)
             {
-                TempData["ErrorMsg"] = "No ID";
-                return RedirectToAction("Error");
+                ViewBag.ErrorMsg = "No ID";
+                return View("Error");
             }
             Fan fan = db.Fans.Find(id);
             if (fan == null)
             {
-                TempData["ErrorMsg"] = "Error with edit";
-                return RedirectToAction("Error");
+                ViewBag.ErrorMsg = "Error with edit";
+                return View("Error");
             }
             return View(fan);
         }
@@ -107,14 +135,14 @@ namespace Blog.Controllers
         {
             if (!id.HasValue)
             {
-                TempData["ErrorMsg"] = "No ID";
-                return RedirectToAction("Error");
+                ViewBag.ErrorMsg = "No ID";
+                return View("Error");
             }
             Fan fan = db.Fans.Find(id);
             if (fan == null)
             {
-                TempData["ErrorMsg"] = "No Data";
-                return RedirectToAction("Error");
+                ViewBag.ErrorMsg = "No Data";
+                return View("Error");
             }
             return View(fan);
         }

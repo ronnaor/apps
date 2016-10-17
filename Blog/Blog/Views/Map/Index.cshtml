@@ -1,0 +1,94 @@
+﻿@model IEnumerable<Blog.Models.Map>
+
+@{
+    ViewBag.Title = "Index";
+}
+<p>
+    @Html.ActionLink("Shauli Sightings", "Locations")
+</p>
+
+
+<section id="search">
+    <!-- Search -->
+    @using (Html.BeginForm())
+    {
+        <fieldset>
+            <legend>Search addresses:</legend>
+            <table>
+                <tr>
+                    <td>
+                        <label for="addressName">Address:</label>
+                    </td>
+                    <td>
+                        @Html.DropDownList("addressName", "All")
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="latNum">Lat:</label>
+                    </td>
+                    <td>
+                        @Html.DropDownList("latNum", "All")
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="lngNum">Lng:</label>
+                    </td>
+                    <td>
+                        @Html.DropDownList("lngNum", "All")
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="submit" colspan="2">
+                        <input type="submit" value="Search">
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+    }
+</section>
+
+
+
+<h2>Addresses:</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Lat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Lng)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Lat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Lng)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
