@@ -4,6 +4,14 @@
     ViewBag.Title = "Blog Guests";
 }
 
+
+<p class="weather">
+    <span class="wh" >Shauli current house weather:</span> <br />
+    The weather in: <span id="city"></span>, <span id="country"></span> <br />
+    The temp is: <span id="temp"></span> C <br />
+    The humidity is: <span id="humidity"></span> %<br />
+</p>
+
 <audio controls autoplay><source src="~/music/song.mp3" type="audio/mpeg" controls="controls"></audio>
 <canvas id="myCanvas" width="10" height="10"></canvas>
 
@@ -87,6 +95,6 @@ else
 }
 @section scripts {
     <script type="text/javascript" src="~/scripts/canvas.js"></script>
-   
+    <script type="text/javascript" src="~/scripts/Weather.js"></script>
 }
 
