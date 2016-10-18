@@ -1,5 +1,4 @@
 ﻿
-
 @{
     ViewBag.Title = "Locations";
 }
@@ -11,6 +10,49 @@
 <p id="a"></p><p></p>
 
 @section scripts {
-    <script type="text/javascript" src="~/scripts/map.js"></script>
+    
+    <script type="text/javascript">
+        function myMap() {
+            $.ajax({
+                url: '@Url.Action("Locations2", "Map")',
+                type: 'GET',
+                dataType: 'json'
+            })
+            .success(function (result) {
+                var locations = [[]];
+                var location;
+                for (var i in result) {
+                    location = $.map(result[i], function (value, index) {
+                        return [value];
+                    });
+                    locations.push(location);
+                }
+
+                console.log(locations);
+
+                var mapCanvas = document.getElementById("myMap");
+                var mapOptions = {
+                    center: new google.maps.LatLng(30, 30),
+                    zoom: 2
+                };
+                var map = new google.maps.Map(mapCanvas, mapOptions);
+                i = 0;
+                for (var key in locations) {
+                    var latLng1 = new google.maps.LatLng(locations[i][0], locations[i][1]);
+                    var marker1 = new google.maps.Marker({
+                        position: latLng1,
+                        map: map,
+                        animation: google.maps.Animation.BOUNCE,
+                        url: "images/shauli.png",
+                        size: new google.maps.Size(55, 55)
+                    });
+                    marker1.setMap(map);
+                    i++;
+                };
+
+
+            });
+        };
+    </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC4DAMr4GpxEr8CBhljwkpY__5kMxSUNJo&callback=myMap"></script>
 }

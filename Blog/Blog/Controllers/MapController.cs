@@ -141,12 +141,16 @@ namespace Blog.Controllers
             }
             return View(map);
         }
-
-
         public ActionResult Locations()
         {
             var locations = db.Map.Select(x => new { x.Lat, x.Lng });
-            return View(Json(locations.ToList()));
+            return View();
+        }
+
+        public JsonResult Locations2()
+        {
+            var locations = db.Map.Select(x => new { x.Lat, x.Lng });
+            return Json(locations.ToList(), JsonRequestBehavior.AllowGet);
         }
 
         // POST: Map/Delete/5
