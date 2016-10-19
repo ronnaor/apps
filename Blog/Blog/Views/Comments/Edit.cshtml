@@ -5,9 +5,9 @@
 }
 
 @section head {
-    @Styles.Render("~/Styles/blog.css")
+    @Styles.Render("~/Styles/comments.css")
 }
-<h2 id="BlogTitle">Edit Comment</h2>
+<h2 id="CommentsTitle">Edit Comment</h2>
 
 
 @using (Html.BeginForm())
@@ -62,7 +62,7 @@
 }
 
 <p>
-    @Html.ActionLink("Back to List", "Index", null, new { @class = "link" })
+    @Html.ActionLink("Back to List", "Index", new { id = Model.PostID }, new { @class = "link" })
 </p>
 
 

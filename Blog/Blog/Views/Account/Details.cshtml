@@ -1,0 +1,37 @@
+﻿@model Blog.Models.Manager
+
+@{
+    ViewBag.Title = "Details";
+}
+@section head {
+    @Styles.Render("~/Styles/blog.css")
+}
+<h2 id="FanClubTitle">Manager Details</h2>
+
+<div>
+    <table class="table-horizontal">
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Name)</th>
+            <td>@Html.DisplayFor(model => model.Name)</td>
+        </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.LastName)</th>
+            <td>@Html.DisplayFor(model => model.LastName)</td>
+        </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.UserName)</th>
+            <td>@Html.DisplayFor(model => model.UserName)</td>
+        </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Password)</th>
+            <td>@Html.DisplayFor(model => model.Password)</td>
+        </tr>
+    </table>
+</div>
+
+
+<p>
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "link" })
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) 
+    @Html.ActionLink("Delete", "Delete", new { id = Model.ID }, new { @class = "link" })   
+</p>

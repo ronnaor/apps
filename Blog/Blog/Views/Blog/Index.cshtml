@@ -49,14 +49,6 @@
                 </tr>
                 <tr>
                     <td>
-                        <label for="group">Group by:</label>
-                    </td>
-                    <td>
-                        @Html.DropDownList("group", "")
-                    </td>
-                </tr>
-                <tr>
-                    <td>
                         <label for="comments">Minimum Comments:</label>
                     </td>
                     <td>
@@ -103,10 +95,14 @@
                     @Html.DisplayFor(modelItem => item.Name)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.PostID }, new { @class = "link" }) 
-                    @Html.ActionLink("Details", "Details", new { id = item.PostID }, new { @class = "link" })
-                    @Html.ActionLink("Comments", "Comments", new { id = item.PostID }, new { @class = "link" }) 
-                    @Html.ActionLink("Delete", "Delete", new { id = item.PostID }, new { @class = "link" })
+                    @Html.ActionLink("Comments", "Comments", new { id = item.PostID }, new { @class = "link" })
+
+                    @if (Session["ID"] != null)
+                    {
+                        @Html.ActionLink("Details", "Details", new { id = item.PostID }, new { @class = "link" })
+                        @Html.ActionLink("Edit", "Edit", new { id = item.PostID }, new { @class = "link" })
+                        @Html.ActionLink("Delete", "Delete", new { id = item.PostID }, new { @class = "link" })
+                    }
                 </td>
             </tr>
         }

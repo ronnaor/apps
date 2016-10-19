@@ -114,9 +114,12 @@
                     @Html.DisplayFor(modelItem => item.Seniority)
                 </td>
                 <td id="crude">
-                    @Html.ActionLink("Details", "Details", new { id = item.ID }, new { @class = "link" })
-                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "link" })
-                    @Html.ActionLink("Delete", "Delete", new { id = item.ID }, new { @class = "link" })
+                    @if (Session["ID"] != null)
+                    {
+                        @Html.ActionLink("Details", "Details", new { id = item.ID }, new { @class = "link" })
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "link" })
+                        @Html.ActionLink("Delete", "Delete", new { id = item.ID }, new { @class = "link" })
+                    }             
                 </td>
             </tr>
         }

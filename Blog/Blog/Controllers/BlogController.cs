@@ -18,7 +18,7 @@ namespace Blog.Controllers
         private BlogDBContext db = new BlogDBContext();
 
         // GET: Blog
-        public ActionResult Index(DateTime? date, string postTitle, string postAuthor, string words, string group, int? comments)
+        public ActionResult Index(DateTime? date, string postTitle, string postAuthor, string words, int? comments)
         {
             var TitleList = new List<string>();
             var TitleQry = from p in db.Posts orderby p.Title select p.Title;
@@ -30,25 +30,7 @@ namespace Blog.Controllers
             AuthorList.AddRange(AuthorQry.Distinct());
             ViewBag.postAuthor = new SelectList(AuthorList);
 
-            var GroupList = new List<string> { "Title", "Name", "Date" }; ;
-            ViewBag.group = new SelectList(GroupList);
-
             var posts = from p in db.Posts select p;
-            //if (!String.IsNullOrEmpty(group))
-            //{
-            //    if (group == "Title")
-            //    {
-            //        posts = posts.GroupBy(x => x.Title).SelectMany(x => x);
-            //    }
-            //    else if (group == "Name")
-            //    {
-            //        posts = posts.GroupBy(x => x.Name).SelectMany(x => x);
-            //    }
-            //    else if (group == "Date")
-            //    {
-            //        posts = posts.GroupBy(x => x.Title).SelectMany(x => x);
-            //    }
-            //}
             if (!(date == DateTime.MinValue) && !(date == null))
             {
                 posts = posts.Where(x => (x.Date.Day == date.Value.Day) && (x.Date.Month == date.Value.Month) && (x.Date.Year == date.Value.Year));

@@ -19,6 +19,7 @@ namespace Blog.DAL
         public DbSet<Post> Posts { get; set; }
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Map> Map { get; set; }
+        public DbSet<Manager> Manager { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

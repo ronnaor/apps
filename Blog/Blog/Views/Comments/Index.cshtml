@@ -72,9 +72,13 @@
                     <time>@Html.DisplayFor(modelItem => comment.Date) </time>
                 </header>
                 <p>@Html.DisplayFor(modelItem => comment.Content)</p>
-                @Html.ActionLink("Edit", "Edit", new { id = comment.CommentID }, new { @class = "link" })
-                @Html.ActionLink("Delete", "Delete", new { id = comment.CommentID }, new { @class = "link" })
-            </article>
+                @if (Session["ID"] != null)
+                {
+                    @Html.ActionLink("Details", "Details", new { id = comment.CommentID }, new { @class = "link" })
+                    @Html.ActionLink("Edit", "Edit", new { id = comment.CommentID }, new { @class = "link" })
+                    @Html.ActionLink("Delete", "Delete", new { id = comment.CommentID }, new { @class = "link" })
+                }
+             </article>
         }
     }
     else

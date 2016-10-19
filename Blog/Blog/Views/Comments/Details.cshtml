@@ -1,15 +1,14 @@
 ﻿@model Blog.Models.Comment
 
+@{
+    ViewBag.Title = "Details";
+}
 @section head {
     @Styles.Render("~/Styles/comments.css")
 }
 
-@{
-    ViewBag.Title = "Delete";
-}
 
-<h2 id="CommentsTitle">Are you sure you want to delete this Comment?</h2>
-
+<h2 id="CommentsTitle">Comment Details:</h2>
 <div>
     <table class="table-horizontal">
         <tr>
@@ -37,15 +36,14 @@
             <td>@Html.DisplayFor(model => model.Date)</td>
         </tr>
     </table>
-        
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
-
-        <p class="form-actions no-color">
-            <input type="submit" value="Delete" class="link" /> 
-            @Html.ActionLink("Back to List", "Index", new { id = Model.PostID }, new { @class = "link" })
-            @Html.ActionLink("Back to posts", "Index", "Blog", null, new { @class = "link" })
-        </p>
-    }
 </div>
+
+
+<p>
+    @Html.ActionLink("Back to List", "Index", new { id = Model.PostID }, new { @class = "link" })
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CommentID }, new { @class = "link" })
+    @Html.ActionLink("Delete", "Delete", new { id = Model.CommentID }, new { @class = "link" })
+</p>
+
+
+       

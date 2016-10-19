@@ -98,6 +98,11 @@ nav ul li #transDemo2 div:hover, #transDemo2 div.hover_effect {
 	transform:rotate(720deg) scale(2,2);
 }
 
+li.session{
+    font-size: 24px;
+    color:gold;
+}
+
 .navbar-inverse .navbar-brand{
 	color: mediumseagreen;
 }
@@ -598,3 +603,4 @@ p.weather span.wh{
     color:blue;
     
 }
+

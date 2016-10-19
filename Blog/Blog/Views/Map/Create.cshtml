@@ -3,16 +3,17 @@
 @{
     ViewBag.Title = "Create";
 }
-
-<h2>Create</h2>
+@section head {
+    @Styles.Render("~/Styles/blog.css")
+}
+<h2 id="BlogTitle">Add New Location:</h2>
 
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Map</h4>
-        <hr />
+        
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
             @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -46,6 +47,6 @@
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+<p>
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "link" })
+</p>

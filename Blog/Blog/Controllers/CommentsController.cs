@@ -99,6 +99,23 @@ namespace Blog.Controllers
             return View(comment);
         }
 
+        // GET: Comments/Details/5
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                ViewBag.ErrorMsg = "No ID";
+                return View("Error");
+            }
+            Comment comment = db.Comments.Find(id);
+            if (comment == null)
+            {
+                ViewBag.ErrorMsg = "Error with details";
+                return View("Error");
+            }
+            return View(comment);
+        }
+
         // GET: Comments/Delete/5
         public ActionResult Delete(int? id)
         {

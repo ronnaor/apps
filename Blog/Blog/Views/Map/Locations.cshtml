@@ -2,12 +2,20 @@
 @{
     ViewBag.Title = "Locations";
 }
-
-<h2>Locations:</h2>
+@section head {
+    @Styles.Render("~/Styles/blog.css")
+}
+<h2 id="BlogTitle">Shauli locations:</h2>
 
 <div id="myMap"></div>
+<p></p>
+@if (Session["ID"] != null)
+{
+   <p>@Html.ActionLink("Map details", "index", null, new { @class = "link" })</p> 
+}
 
-<p id="a"></p><p></p>
+<p></p><p></p>
+
 
 @section scripts {
     

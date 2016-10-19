@@ -190,6 +190,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\BlogGuestsController.cs" />
     <Compile Include="Controllers\CommentsController.cs" />
@@ -207,7 +208,12 @@
     <Compile Include="Migrations\201610151555440_Migration33.Designer.cs">
       <DependentUpon>201610151555440_Migration33.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201610190742089_Migration34.cs" />
+    <Compile Include="Migrations\201610190742089_Migration34.Designer.cs">
+      <DependentUpon>201610190742089_Migration34.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Manager.cs" />
     <Compile Include="Models\Map.cs" />
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Fan.cs" />
@@ -253,6 +259,15 @@
     <Content Include="Views\Map\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Map\Locations.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\LoggedIn.cshtml" />
+    <Content Include="Views\Account\Index.cshtml" />
+    <Content Include="Views\Account\Details.cshtml" />
+    <Content Include="Views\Account\Edit.cshtml" />
+    <Content Include="Views\Account\Delete.cshtml" />
+    <Content Include="Views\Comments\Details.cshtml" />
+    <Content Include="Views\Comments\Edit.cshtml" />
     <None Include="Web References\net.webservicex.www\globalweather.wsdl" />
     <Content Include="Web References\net.webservicex.www\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
@@ -293,6 +308,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201610151555440_Migration33.resx">
       <DependentUpon>201610151555440_Migration33.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610190742089_Migration34.resx">
+      <DependentUpon>201610190742089_Migration34.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

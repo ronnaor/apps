@@ -1,0 +1,111 @@
+﻿@model IEnumerable<Blog.Models.Manager>
+
+@{
+    ViewBag.Title = "Manager List";
+}
+@section head {
+    @Styles.Render("~/Styles/blog.css")
+}
+
+
+<section id="search">
+    <!-- Search -->
+    @using (Html.BeginForm())
+    {
+        <fieldset>
+            <legend>Search Managers:</legend>
+            <table>
+                <tr>
+                    <td>
+                        <label for="fName">First Name:</label>
+                    </td>
+                    <td>
+                        @Html.DropDownList("fName", "All")
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="lName">Last Name:</label>
+                    </td>
+                    <td>
+                        @Html.DropDownList("lName", "All")
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="usrName">Last Name:</label>
+                    </td>
+                    <td>
+                        @Html.DropDownList("usrName", "All")
+                    </td>
+                </tr>
+                <tr>
+                    <td class="submit" colspan="2">
+                        <input type="submit" value="Search">
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+    }
+</section>
+
+<h2 id="BlogTitle">Mangers:</h2>
+
+<table class="table">
+    @if (!Model.Any())
+    {
+        <tr><td>There are no posts found</td></tr>
+    }
+    else
+    {
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+
+            <th></th>
+        </tr>
+
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+
+                <td>
+                    @if (Session["ID"] != null)
+                    {
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "link" })
+                        @Html.ActionLink("Details", "Details", new { id = item.ID }, new { @class = "link" })
+                        @Html.ActionLink("Delete", "Delete", new { id = item.ID }, new { @class = "link" })
+                    }
+                </td>
+            </tr>
+        }
+
+    }
+</table>
+    
+@if (Session["ID"] != null)
+{
+    <p>
+        @Html.ActionLink("New Manger:", "Register", null, new { @class = "link" })
+    </p>
+}
+
+@section scripts {
+    <script type="text/javascript" src="~/scripts/funcs.js"></script>
+}

@@ -25,7 +25,8 @@
                     <li class="selected">@Html.ActionLink("Home", "Index", "BlogGuests")</li>
                     <li class="selected">@Html.ActionLink("Blog", "Index", "Blog")</li>
                     <li class="selected">@Html.ActionLink("Fan Club", "Index", "FanClub")</li>
-                    <li class="selected">@Html.ActionLink("Map", "Index", "Map")</li>
+                    <li class="selected">@Html.ActionLink("Map", "Locations", "Map")</li>
+                    <li class="selected">@Html.ActionLink("Mangers List", "Index", "Account")</li>
                     <li class="limage">
                         <div id="transDemo2">
                             <div class="hover">
@@ -34,6 +35,22 @@
                         </div>
                     </li>
                     <li class="subscribe"><a href="#">Subscribe via. RSS</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    @if (Session["ID"] != null)
+                    {
+                        <li class="session">hello @Session["Name"].ToString()</li>
+                        <li><span class="glyphicon glyphicon-log-out"></span></li>
+                        <li class="selected">@Html.ActionLink("LogOut", "LogOut", "Account")</li>
+                    }
+                    else
+                    {
+                        <li><span class="glyphicon glyphicon-user"></span></li>
+                        <li class="selected">@Html.ActionLink("Register", "Register", "Account")</li>
+                        <li><span class="glyphicon glyphicon-log-in"></span></li>
+                        <li class="selected">@Html.ActionLink("Login", "Login", "Account")</li>
+                    }
+                    
                 </ul>
             </div>
         </div>
