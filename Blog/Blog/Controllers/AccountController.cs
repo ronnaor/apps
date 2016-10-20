@@ -61,14 +61,22 @@ namespace Blog.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Register([Bind(Include = "ID,Name,LastName,UserName,Password,confirmPassword")] Manager account)
         {
-            if (ModelState.IsValid)
+            var v = from p in db.Manager where p.UserName == account.UserName select p;
+            if ((ModelState.IsValid) && (!v.Any()))
             {
                 db.Manager.Add(account);
                 db.SaveChanges();
 
                 ModelState.Clear();
-                ViewBag.Message = account.Name + " " + account.LastName + " successfully registered";
-                return RedirectToAction("Index");
+                Session["ID"] = account.ID.ToString();
+                Session["UserName"] = account.UserName.ToString();
+                Session["Name"] = account.Name.ToString();
+                return RedirectToAction("LoggedIn");
+               
+            }
+            if (v.Any())
+            {
+                ViewBag.usrcpy = "**This user name is already in use.**";
             }
             return View(account);
         }
@@ -167,6 +175,7 @@ namespace Blog.Controllers
             {
                 db.Entry(account).State = EntityState.Modified;
                 db.SaveChanges();
+                Session["Name"] = account.Name.ToString();
                 return RedirectToAction("Index");
             }
             return View(account);
