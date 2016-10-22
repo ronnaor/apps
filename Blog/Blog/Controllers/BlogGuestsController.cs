@@ -60,11 +60,17 @@ namespace Blog.Controllers
                             select new FanManager { Name = manager.Name, LastName = manager.LastName, UserName = manager.UserName, BirthDate = fan.BirthDate, Seniority = fan.Seniority };
                     ViewBag.msg = "FanManager";
                     break;
-                case "Same person publish":
-                    v.CommPost = from post in db.Posts
-                            join comm in db.Comments on post.Name equals comm.Name
-                            select new CommentPost { PostTitle = comm.Post.Title, Name = post.Name, PostDate = post.Date, CommentTitle = comm.Title, CommentDate = comm.Date};
-                    ViewBag.msg = "CommentPost";
+                case "Managers Comments":
+                    v.CommManager = from comm in db.Comments
+                                    join manager in db.Manager on comm.Name equals manager.UserName
+                                    select new CommentManager { FirstName = manager.Name, LastName = manager.LastName, UserName = manager.UserName, PostTitle = comm.Post.Title, CommentTitle = comm.Title, CommentDate = comm.Date };
+                    ViewBag.msg = "CommManager";
+                    break;
+                case "Group comments by post":
+                    v.CommentsGtoup = from comm in db.Comments
+                                    group comm by comm.Post.Title into q
+                                    select new CommentViewModel { PostTitle = q.Key, Values = q.ToList() };
+                    ViewBag.msg = "groupBy";
                     break;
             }
 

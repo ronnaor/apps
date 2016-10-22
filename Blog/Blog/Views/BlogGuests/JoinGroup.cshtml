@@ -7,7 +7,7 @@
 }
 
 
-<h2 id="FanClubTitle">select quary:</h2>
+<h2 id="BlogTitle">select quary:</h2>
 
 
 @using (Html.BeginForm())
@@ -15,14 +15,20 @@
     @Html.AntiForgeryToken()
 
 <div class="form-group">
-    <div class="col-md-offset-2 col-md-10">
-        <input name="submit" type="submit" value="Fans that are managers" class="btn btn-default" />
+    <div class="col-md-offset-0 col-md-10">
+        <input name="submit" type="submit" value="Fans that are managers" class="btn btn-default button"  />
     </div>
 </div>
 
 <div class="form-group">
-    <div class="col-md-offset-2 col-md-10">
-        <input name="submit" type="submit" value="Same person publish" class="btn btn-default" />
+    <div class="col-md-offset-0 col-md-10">
+        <input name="submit" type="submit" value="Managers Comments" class="btn btn-default button" />
+    </div>
+</div>
+
+<div class="form-group">
+    <div class="col-md-offset-0 col-md-10">
+        <input name="submit" type="submit" value="Group comments by post" class="btn btn-default button" />
     </div>
 </div>
 }
@@ -84,10 +90,10 @@
 
 }
 
-@if (ViewBag.msg == "CommentPost")
+@if (ViewBag.msg == "CommManager")
 {
     <table class="table">
-        @if (!Model.CommPost.Any())
+        @if (!Model.CommManager.Any())
         {
             <tr><td>There are no results found</td></tr>
         }
@@ -95,35 +101,41 @@
         {
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.CommPost.First().Name)
+                    @Html.DisplayNameFor(model => model.CommManager.First().FirstName)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.CommPost.First().PostTitle)
+                    @Html.DisplayNameFor(model => model.CommManager.First().LastName)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.CommPost.First().PostDate)
+                    @Html.DisplayNameFor(model => model.CommManager.First().UserName)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.CommPost.First().CommentTitle)
+                    @Html.DisplayNameFor(model => model.CommManager.First().PostTitle)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.CommPost.First().CommentDate)
+                    @Html.DisplayNameFor(model => model.CommManager.First().CommentTitle)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CommManager.First().CommentDate)
                 </th>
                 <th></th>
             </tr>
 
-            foreach (var v in Model.CommPost)
+            foreach (var v in Model.CommManager)
             {
                
                 <tr>
                     <td>
-                        @Html.DisplayFor(modelItem => v.Name)
+                        @Html.DisplayFor(modelItem => v.FirstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => v.LastName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => v.UserName)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => v.PostTitle)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => v.PostDate)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => v.CommentTitle)
@@ -139,4 +151,58 @@
         
     </table>
 
+}
+
+@if (ViewBag.msg == "groupBy")
+{
+    <table class="table">
+        @if (!Model.CommentsGtoup.Any())
+        {
+            <tr><td>There are no results found</td></tr>
+        }
+        else
+        {
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.CommentsGtoup.First().Values.First().Title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CommentsGtoup.First().Values.First().Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CommentsGtoup.First().Values.First().Post.Title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CommentsGtoup.First().Values.First().Date)
+                </th>
+               
+                <th></th>
+            </tr>
+
+            foreach (var v in Model.CommentsGtoup)
+            {
+                foreach (var val in v.Values)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => val.Title)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => val.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => v.PostTitle)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => val.Date)
+                        </td>
+
+                    </tr>
+                }
+
+            }
+
+        }
+
+    </table>
 }

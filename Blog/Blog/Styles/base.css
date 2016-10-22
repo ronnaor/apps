@@ -374,6 +374,10 @@ aside section ul li a:hover {
 	font-style: italic;
 	color: #777;
 }
+
+.blogPost{
+    width:600px;
+}
 	
 .blogPost header h2 {
 	font-size: 36px;
@@ -409,6 +413,7 @@ aside section ul li a:hover {
 	margin-top: 10px;
 	padding-top: 10px;
 	border-top: 1px solid #d7d7d7;
+    width:600px;
 }
 
 #comments article {
@@ -603,5 +608,3 @@ p.weather span.wh{
     color:blue;
     
 }
-
-

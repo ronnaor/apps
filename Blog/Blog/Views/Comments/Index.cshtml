@@ -60,8 +60,9 @@
 
 
 <section id="comments">
+
     <h3 id= @ViewBag.postName>Comments for @ViewBag.postName:</h3>
-    @if (ViewBag.commentsCount != 0)
+    @if (ViewBag.commentsCount != 0 && Model.Any())
     {
         foreach (var comment in Model)
         {
@@ -83,7 +84,7 @@
     }
     else
     {
-        <h2 id="CommentsTitle"> No comments for this Post </h2>
+        <h2 id="CommentsTitle"> No comments found </h2>
     }
 </section>
 

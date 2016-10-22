@@ -62,6 +62,7 @@ namespace Blog.Controllers
                 comments = comments.Where(x => (x.Content.Contains(words)) || (x.Title.Contains(words)));
             }
 
+
             return View(comments);
         }
 

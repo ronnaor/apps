@@ -224,7 +224,8 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="ViewModels\CommentPost.cs" />
+    <Compile Include="ViewModels\CommentManager.cs" />
+    <Compile Include="ViewModels\CommentViewModel.cs" />
     <Compile Include="ViewModels\FanManager.cs" />
     <Compile Include="ViewModels\ViewModel.cs" />
     <Compile Include="Web References\net.webservicex.www\Reference.cs">
