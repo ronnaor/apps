@@ -11,5 +11,7 @@ namespace Blog.ViewModels
         public IEnumerable<FanManager> FanManager { get; set; }
         public IEnumerable<CommentManager> CommManager { get; set; }
         public IEnumerable<CommentViewModel> CommentsGtoup { get; set; }
+        public IEnumerable<GroupCommManager> GroupCommManager { get; set; }
+
     }
 }

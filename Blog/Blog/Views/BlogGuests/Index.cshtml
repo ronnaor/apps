@@ -22,13 +22,14 @@
 }
 else
 {
+    <h1 id="title">Posts in Shauli Blog:</h1>
     foreach (var item in Model.Reverse())
     {
-        <section>
+        <section id="posts">
             <article class="blogPost">
                 <header>
                     <h2>@Html.DisplayFor(modelItem => item.Title)</h2>
-                    <p>Posted on @Html.DisplayFor(modelItem => item.Date) by <a href="@item.Web">@Html.DisplayFor(modelItem => item.Name)</a> - <a href="#@item.Title">@item.Comments.Count() comments</a></p>
+                    <p>Posted on @Html.DisplayFor(modelItem => item.Date) by <a href="@item.Web">@Html.DisplayFor(modelItem => item.Name)</a> - <a href="#@item.PostID">@item.Comments.Count() comments</a></p>
                 </header>
                 <div>
                     @if (!String.IsNullOrEmpty(item.Image))
@@ -49,7 +50,7 @@ else
         </section>
 
         <section id="comments">
-            <h3 id="@item.Title">Comments for @item.Title:</h3>
+            <h3 id="@item.PostID">Comments for @item.Title:</h3>
             @if (item.Comments != null)
             {
                 foreach (var comment in item.Comments)

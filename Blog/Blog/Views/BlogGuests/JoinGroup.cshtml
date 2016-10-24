@@ -6,33 +6,36 @@
     @Styles.Render("~/Styles/blog.css")
 }
 
-
 <h2 id="BlogTitle">select quary:</h2>
-
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
-<div class="form-group">
-    <div class="col-md-offset-0 col-md-10">
-        <input name="submit" type="submit" value="Fans that are managers" class="btn btn-default button"  />
+    <div class="form-group">
+        <div class="col-md-offset-0 col-md-10">
+            <input name="submit" type="submit" value="Fans that are managers" class="btn btn-default button" />
+        </div>
     </div>
-</div>
 
-<div class="form-group">
-    <div class="col-md-offset-0 col-md-10">
-        <input name="submit" type="submit" value="Managers Comments" class="btn btn-default button" />
+    <div class="form-group">
+        <div class="col-md-offset-0 col-md-10">
+            <input name="submit" type="submit" value="Managers Comments" class="btn btn-default button" />
+        </div>
     </div>
-</div>
 
-<div class="form-group">
-    <div class="col-md-offset-0 col-md-10">
-        <input name="submit" type="submit" value="Group comments by post" class="btn btn-default button" />
+    <div class="form-group">
+        <div class="col-md-offset-0 col-md-10">
+            <input name="submit" type="submit" value="Managers Comments group" class="btn btn-default button" />
+        </div>
     </div>
-</div>
+
+    <div class="form-group">
+        <div class="col-md-offset-0 col-md-10">
+            <input name="submit" type="submit" value="Group comments by post" class="btn btn-default button" />
+        </div>
+    </div>
 }
-
 
 @if (ViewBag.msg == "FanManager")
 {
@@ -64,7 +67,7 @@
 
             foreach (var v in Model.FanManager)
             {
-                
+
                 <tr>
                     <td>
                         @Html.DisplayFor(modelItem => v.Name)
@@ -81,15 +84,13 @@
                     <td>
                         @Html.DisplayFor(modelItem => v.Seniority)
                     </td>
-
                 </tr>
             }
         }
-        
+
     </table>
 
 }
-
 @if (ViewBag.msg == "CommManager")
 {
     <table class="table">
@@ -123,7 +124,7 @@
 
             foreach (var v in Model.CommManager)
             {
-               
+
                 <tr>
                     <td>
                         @Html.DisplayFor(modelItem => v.FirstName)
@@ -143,15 +144,79 @@
                     <td>
                         @Html.DisplayFor(modelItem => v.CommentDate)
                     </td>
-
                 </tr>
             }
 
         }
-        
+
     </table>
 
 }
+@if (ViewBag.msg == "GroupCommManager")
+{
+    <table class="table">
+        @if (!Model.GroupCommManager.Any())
+        {
+            <tr><td>There are no results found</td></tr>
+        }
+        else
+        {
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.GroupCommManager.First().Values.First().FirstName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.GroupCommManager.First().Values.First().LastName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.GroupCommManager.First().Values.First().UserName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.GroupCommManager.First().Values.First().PostTitle)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.GroupCommManager.First().Values.First().CommentTitle)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.GroupCommManager.First().Values.First().CommentDate)
+                </th>
+                <th></th>
+            </tr>
+
+            foreach (var v in Model.GroupCommManager)
+            {
+                foreach (var val in v.Values)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => val.FirstName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => val.LastName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => val.UserName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => v.PostTitle)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => val.CommentTitle)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => val.CommentDate)
+                        </td>
+                    </tr>
+                }
+
+            }
+
+        }
+
+    </table>
+
+}
+
 
 @if (ViewBag.msg == "groupBy")
 {
@@ -175,7 +240,7 @@
                 <th>
                     @Html.DisplayNameFor(model => model.CommentsGtoup.First().Values.First().Date)
                 </th>
-               
+
                 <th></th>
             </tr>
 
@@ -196,13 +261,11 @@
                         <td>
                             @Html.DisplayFor(modelItem => val.Date)
                         </td>
-
                     </tr>
                 }
 
             }
 
         }
-
     </table>
 }
